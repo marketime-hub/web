@@ -989,21 +989,21 @@
                     </div>
                 </div>
 
-                <div class="kpi-card highlight" style="opacity: 0.6;">
+                <div class="kpi-card highlight">
                     <div class="kpi-label">One shot marchandises (mois)</div>
-                    <input type="text" class="kpi-value editable" value="- EUR" data-key="kpi-oneshot-mois">
+                    <input type="text" class="kpi-value editable" value="750 EUR" data-key="kpi-oneshot-mois">
                     <div class="kpi-meta">
-                        <span class="kpi-target">En attente onglet comptage Eva</span>
-                        <span class="kpi-status" style="background: var(--bg-input); color: var(--text-muted);"><span class="status-dot"></span> A ventiler</span>
+                        <span class="kpi-target">Cumul 2026 : 24 213 EUR</span>
+                        <span class="kpi-status yellow"><span class="status-dot"></span> Avril 2026 (mois faible)</span>
                     </div>
                 </div>
 
                 <div class="kpi-card highlight">
                     <div class="kpi-label">Prestations de services (mois)</div>
-                    <input type="text" class="kpi-value editable" value="- EUR" data-key="kpi-prestations-mois">
+                    <input type="text" class="kpi-value editable" value="150 EUR" data-key="kpi-prestations-mois">
                     <div class="kpi-meta">
-                        <span class="kpi-target">Matthias + mkg + formation</span>
-                        <span class="kpi-status" style="background: var(--bg-input); color: var(--text-muted);"><span class="status-dot"></span> A renseigner</span>
+                        <span class="kpi-target">Cumul 2026 : 300 EUR (+240 mai)</span>
+                        <span class="kpi-status yellow"><span class="status-dot"></span> Avril 2026 (Serenicity formation)</span>
                     </div>
                 </div>
             </div>
@@ -1016,10 +1016,10 @@
 
             <div class="kpi-grid">
                 <div class="kpi-card">
-                    <div class="kpi-label">Solde banque (18/05)</div>
-                    <input type="text" class="kpi-value editable" value="10 677 EUR" data-key="tresorerie">
+                    <div class="kpi-label">Solde banque (21/05)</div>
+                    <input type="text" class="kpi-value editable" value="12 507 EUR" data-key="tresorerie">
                     <div class="kpi-meta">
-                        <span class="kpi-target">Projection 31/05 : 4 830 EUR</span>
+                        <span class="kpi-target">Projection 31/05 : 5 768 EUR</span>
                         <span class="kpi-status yellow"><span class="status-dot"></span> CCA Jerome en cours</span>
                     </div>
                 </div>
@@ -1304,191 +1304,192 @@
                 </div>
             </div>
 
-            <div class="alert" style="background: var(--accent-yellow-dim); border: 1px solid var(--accent-yellow); color: var(--text-primary);">
-                <span><strong>En attente du retraitement Eva.</strong> Le LA 2026 actuel ne distingue pas les ventes <strong>one shot</strong> (boitier Detoxio, cles Locknest, materiel) des <strong>abonnements souscrits</strong> dans le mois. Les chiffres "CA produit" issus du LA melent les deux. Mail envoye a Eva pour ajouter l'onglet "comptage" comme sur LA 2025 (cf. <em>mail-eva-onglet-comptage-LA2026.md</em>). Les tableaux ci-dessous sont neutralises tant que la ventilation n'est pas dispo.</span>
+            <div class="alert info">
+                <span><strong>Source :</strong> LA 2026 feuille <em>facturation</em> (Eva, mise a jour 21/05). Ventilation propre entre <strong>Serenicity Boitier</strong> (one shot mat) / <strong>Serenicity Formation + MCYBER pentest</strong> (prestations) / Detoxio Abo + Sunbren + Cybi + Secuserve + Sxipher Licence (recurrent, affiche dans l'onglet MRR).</span>
             </div>
 
             <div class="alert info" style="margin-top: 0.75rem;">
-                <span><strong>Decalage temporel structurel :</strong> les commandes revendeurs sont prelevees au cours du mois M ou M+1 selon les accords commerciaux ; les reglements fournisseurs Detoxio tombent le 10 de M+1. La marge mensuelle calendaire est donc volatile par nature — privilegier la lecture en <strong>cumul glissant 2-3 mois</strong>.</span>
+                <span><strong>Decalage temporel structurel :</strong> commandes revendeurs prelevees mois M ou M+1 selon accords ; reglements fournisseurs Detoxio le 10 de M+1. Lecture en <strong>cumul glissant 2-3 mois</strong> recommandee.</span>
             </div>
 
-            <div class="data-table-container" style="opacity: 0.5;">
-                <div class="table-title">One shot marchandises - evolution mensuelle 2026 <span style="font-weight: 400; color: var(--text-muted); font-size: 0.8rem;">(neutralise - donnees melees avec abos en attente Eva)</span></div>
+            <div class="data-table-container">
+                <div class="table-title">One shot &amp; Prestations - evolution mensuelle 2026 (CA HT)</div>
                 <table class="data-table">
                     <thead>
                         <tr>
                             <th>Mois</th>
-                            <th>CA total (HT)</th>
-                            <th>Marge produit</th>
-                            <th>Taux de marge</th>
-                            <th>Cumul marge</th>
+                            <th>One shot materiel</th>
+                            <th>Prestations</th>
+                            <th>Total non-recurrent</th>
+                            <th>Cumul</th>
+                            <th>Visualisation</th>
                         </tr>
                     </thead>
                     <tbody>
                         <tr>
                             <td><strong>Janvier 2026</strong></td>
-                            <td class="cell-mono"><input type="text" class="editable-cell" value="33 164 EUR" data-key="oneshot-ca-jan"></td>
-                            <td class="cell-mono" style="color: var(--accent-red);"><input type="text" class="editable-cell" value="-17 176 EUR" data-key="oneshot-marge-jan"></td>
-                            <td class="cell-mono" style="color: var(--accent-red);">-52%</td>
-                            <td class="cell-mono">-17 176 EUR</td>
+                            <td class="cell-mono"><input type="text" class="editable-cell" value="5 198 EUR" data-key="os-mat-jan"></td>
+                            <td class="cell-mono"><input type="text" class="editable-cell" value="150 EUR" data-key="os-presta-jan"></td>
+                            <td class="cell-mono">5 348 EUR</td>
+                            <td class="cell-mono">5 348 EUR</td>
+                            <td><div style="background: var(--bg-input); border-radius: 4px; height: 18px;"><div style="background: var(--mh-blue); height: 100%; width: 30%; border-radius: 4px;"></div></div></td>
                         </tr>
-                        <tr>
-                            <td><strong>Fevrier 2026</strong></td>
-                            <td class="cell-mono"><input type="text" class="editable-cell" value="44 930 EUR" data-key="oneshot-ca-feb"></td>
-                            <td class="cell-mono"><input type="text" class="editable-cell" value="24 550 EUR" data-key="oneshot-marge-feb"></td>
-                            <td class="cell-mono">55%</td>
-                            <td class="cell-mono">7 374 EUR</td>
+                        <tr style="background: var(--accent-green-dim);">
+                            <td><strong>Fevrier 2026</strong> <span style="color: var(--accent-green); font-size: 0.75rem;">(mois fort)</span></td>
+                            <td class="cell-mono cell-highlight"><input type="text" class="editable-cell" value="17 660 EUR" data-key="os-mat-feb"></td>
+                            <td class="cell-mono"><input type="text" class="editable-cell" value="0 EUR" data-key="os-presta-feb"></td>
+                            <td class="cell-mono cell-highlight">17 660 EUR</td>
+                            <td class="cell-mono">23 008 EUR</td>
+                            <td><div style="background: var(--bg-input); border-radius: 4px; height: 18px;"><div style="background: var(--accent-green); height: 100%; width: 100%; border-radius: 4px;"></div></div></td>
                         </tr>
                         <tr>
                             <td><strong>Mars 2026</strong></td>
-                            <td class="cell-mono"><input type="text" class="editable-cell" value="39 773 EUR" data-key="oneshot-ca-mar"></td>
-                            <td class="cell-mono"><input type="text" class="editable-cell" value="18 488 EUR" data-key="oneshot-marge-mar"></td>
-                            <td class="cell-mono">46%</td>
-                            <td class="cell-mono">25 862 EUR</td>
+                            <td class="cell-mono"><input type="text" class="editable-cell" value="605 EUR" data-key="os-mat-mar"></td>
+                            <td class="cell-mono"><input type="text" class="editable-cell" value="0 EUR" data-key="os-presta-mar"></td>
+                            <td class="cell-mono">605 EUR</td>
+                            <td class="cell-mono">23 613 EUR</td>
+                            <td><div style="background: var(--bg-input); border-radius: 4px; height: 18px;"><div style="background: var(--mh-blue); height: 100%; width: 3%; border-radius: 4px;"></div></div></td>
                         </tr>
                         <tr style="background: var(--mh-blue-dim);">
                             <td><strong>Avril 2026</strong></td>
-                            <td class="cell-mono"><input type="text" class="editable-cell" value="26 053 EUR" data-key="oneshot-ca-apr"></td>
-                            <td class="cell-mono cell-highlight" style="color: var(--accent-yellow);"><input type="text" class="editable-cell" value="5 952 EUR" data-key="oneshot-marge-apr"></td>
-                            <td class="cell-mono">23%</td>
-                            <td class="cell-mono cell-highlight">31 814 EUR</td>
+                            <td class="cell-mono cell-highlight"><input type="text" class="editable-cell" value="750 EUR" data-key="os-mat-apr"></td>
+                            <td class="cell-mono cell-highlight"><input type="text" class="editable-cell" value="150 EUR" data-key="os-presta-apr"></td>
+                            <td class="cell-mono cell-highlight">900 EUR</td>
+                            <td class="cell-mono">24 513 EUR</td>
+                            <td><div style="background: var(--bg-input); border-radius: 4px; height: 18px;"><div style="background: var(--mh-blue); height: 100%; width: 5%; border-radius: 4px;"></div></div></td>
                         </tr>
                         <tr>
                             <td><strong>Mai 2026</strong> <span style="color: var(--text-muted); font-size: 0.75rem;">(en cours)</span></td>
-                            <td class="cell-mono"><input type="text" class="editable-cell" value="21 171 EUR" data-key="oneshot-ca-may"></td>
-                            <td class="cell-mono"><input type="text" class="editable-cell" value="21 171 EUR" data-key="oneshot-marge-may"></td>
-                            <td class="cell-mono">100%</td>
-                            <td class="cell-mono">52 984 EUR</td>
+                            <td class="cell-mono"><input type="text" class="editable-cell" value="650 EUR" data-key="os-mat-may"></td>
+                            <td class="cell-mono"><input type="text" class="editable-cell" value="240 EUR" data-key="os-presta-may"></td>
+                            <td class="cell-mono">890 EUR</td>
+                            <td class="cell-mono">25 403 EUR</td>
+                            <td><div style="background: var(--bg-input); border-radius: 4px; height: 18px;"><div style="background: var(--mh-blue); height: 100%; width: 5%; border-radius: 4px;"></div></div></td>
                         </tr>
                         <tr style="background: var(--bg-input);">
-                            <td><strong>Cumul T1 + avril</strong></td>
-                            <td class="cell-mono"><strong>143 919 EUR</strong></td>
-                            <td class="cell-mono cell-highlight"><strong>31 814 EUR</strong></td>
-                            <td class="cell-mono"><strong>22%</strong></td>
+                            <td><strong>Cumul Janv-Mai</strong></td>
+                            <td class="cell-mono"><strong>24 863 EUR</strong></td>
+                            <td class="cell-mono"><strong>540 EUR</strong></td>
+                            <td class="cell-mono cell-highlight"><strong>25 403 EUR</strong></td>
                             <td class="cell-mono">-</td>
-                        </tr>
-                    </tbody>
-                </table>
-            </div>
-
-            <div class="data-table-container" style="opacity: 0.5;">
-                <div class="table-title">One shot - repartition par fournisseur (avril 2026) <span style="font-weight: 400; color: var(--text-muted); font-size: 0.8rem;">(neutralise - inclut abos en attente Eva)</span></div>
-                <table class="data-table">
-                    <thead>
-                        <tr>
-                            <th>Fournisseur / Produit</th>
-                            <th>Ventes (commandes)</th>
-                            <th>CA HT</th>
-                            <th>Marge produit</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td><strong>Serenicity</strong> <span style="color: var(--text-muted); font-size: 0.75rem;">(boitiers Detoxio)</span></td>
-                            <td class="cell-mono"><input type="text" class="editable-cell" value="-" data-key="os-detoxio-cmd"></td>
-                            <td class="cell-mono"><input type="text" class="editable-cell" value="11 897 EUR" data-key="os-serenicity-ca"></td>
-                            <td class="cell-mono"><input type="text" class="editable-cell" value="- EUR" data-key="os-serenicity-marge"></td>
-                        </tr>
-                        <tr>
-                            <td><strong>Sunbren</strong></td>
-                            <td class="cell-mono"><input type="text" class="editable-cell" value="-" data-key="os-sunbren-cmd"></td>
-                            <td class="cell-mono"><input type="text" class="editable-cell" value="5 093 EUR" data-key="os-sunbren-ca"></td>
-                            <td class="cell-mono"><input type="text" class="editable-cell" value="- EUR" data-key="os-sunbren-marge"></td>
-                        </tr>
-                        <tr>
-                            <td><strong>Scuba</strong></td>
-                            <td class="cell-mono"><input type="text" class="editable-cell" value="-" data-key="os-scuba-cmd"></td>
-                            <td class="cell-mono"><input type="text" class="editable-cell" value="323 EUR" data-key="os-scuba-ca"></td>
-                            <td class="cell-mono"><input type="text" class="editable-cell" value="- EUR" data-key="os-scuba-marge"></td>
-                        </tr>
-                        <tr>
-                            <td><strong>Locknest</strong> <span style="color: var(--text-muted); font-size: 0.75rem;">(cles)</span></td>
-                            <td class="cell-mono"><input type="text" class="editable-cell" value="-" data-key="os-locknest-cmd"></td>
-                            <td class="cell-mono"><input type="text" class="editable-cell" value="0 EUR" data-key="os-locknest-ca"></td>
-                            <td class="cell-mono"><input type="text" class="editable-cell" value="0 EUR" data-key="os-locknest-marge"></td>
-                        </tr>
-                        <tr>
-                            <td><strong>Sxipher</strong></td>
-                            <td class="cell-mono"><input type="text" class="editable-cell" value="-" data-key="os-sxipher-cmd"></td>
-                            <td class="cell-mono"><input type="text" class="editable-cell" value="1 000 EUR" data-key="os-sxipher-ca"></td>
-                            <td class="cell-mono"><input type="text" class="editable-cell" value="- EUR" data-key="os-sxipher-marge"></td>
-                        </tr>
-                        <tr>
-                            <td><strong>Secuserve</strong></td>
-                            <td class="cell-mono"><input type="text" class="editable-cell" value="-" data-key="os-secuserve-cmd"></td>
-                            <td class="cell-mono"><input type="text" class="editable-cell" value="1 788 EUR" data-key="os-secuserve-ca"></td>
-                            <td class="cell-mono"><input type="text" class="editable-cell" value="- EUR" data-key="os-secuserve-marge"></td>
-                        </tr>
-                        <tr style="background: var(--bg-input);">
-                            <td><strong>TOTAL avril 2026</strong></td>
-                            <td class="cell-mono">-</td>
-                            <td class="cell-mono"><strong>26 053 EUR</strong></td>
-                            <td class="cell-mono cell-highlight" style="color: var(--accent-yellow);"><strong>5 952 EUR</strong> <span style="font-size: 0.7rem; color: var(--text-muted);">(a verifier 14h30)</span></td>
+                            <td class="cell-mono" style="color: var(--text-muted); font-size: 0.8rem;">Moyenne ~5 080 EUR/mois</td>
                         </tr>
                     </tbody>
                 </table>
             </div>
 
             <div class="data-table-container">
-                <div class="table-title">Prestations de services - evolution mensuelle 2026</div>
+                <div class="table-title">One shot materiel - detail par fournisseur (CA HT facture aux revendeurs)</div>
                 <table class="data-table">
                     <thead>
                         <tr>
-                            <th>Mois</th>
-                            <th>Matthias</th>
-                            <th>Marketing</th>
-                            <th>Formation</th>
-                            <th>Autres</th>
-                            <th>Total mois</th>
+                            <th>Fournisseur / Produit</th>
+                            <th>Janvier</th>
+                            <th>Fevrier</th>
+                            <th>Mars</th>
+                            <th>Avril</th>
+                            <th>Mai</th>
+                            <th>Cumul</th>
                         </tr>
                     </thead>
                     <tbody>
                         <tr>
-                            <td><strong>Janvier 2026</strong></td>
-                            <td class="cell-mono"><input type="text" class="editable-cell" value="- EUR" data-key="presta-matthias-jan"></td>
-                            <td class="cell-mono"><input type="text" class="editable-cell" value="- EUR" data-key="presta-mkg-jan"></td>
-                            <td class="cell-mono"><input type="text" class="editable-cell" value="- EUR" data-key="presta-form-jan"></td>
-                            <td class="cell-mono"><input type="text" class="editable-cell" value="- EUR" data-key="presta-autres-jan"></td>
-                            <td class="cell-mono"><input type="text" class="editable-cell" value="- EUR" data-key="presta-total-jan"></td>
+                            <td><strong>Serenicity</strong> <span style="color: var(--text-muted); font-size: 0.75rem;">(boitiers Detoxio)</span></td>
+                            <td class="cell-mono">5 198 EUR</td>
+                            <td class="cell-mono">17 660 EUR</td>
+                            <td class="cell-mono">605 EUR</td>
+                            <td class="cell-mono">750 EUR</td>
+                            <td class="cell-mono">650 EUR</td>
+                            <td class="cell-mono cell-highlight">24 863 EUR</td>
                         </tr>
                         <tr>
-                            <td><strong>Fevrier 2026</strong></td>
-                            <td class="cell-mono"><input type="text" class="editable-cell" value="- EUR" data-key="presta-matthias-feb"></td>
-                            <td class="cell-mono"><input type="text" class="editable-cell" value="- EUR" data-key="presta-mkg-feb"></td>
-                            <td class="cell-mono"><input type="text" class="editable-cell" value="- EUR" data-key="presta-form-feb"></td>
-                            <td class="cell-mono"><input type="text" class="editable-cell" value="- EUR" data-key="presta-autres-feb"></td>
-                            <td class="cell-mono"><input type="text" class="editable-cell" value="- EUR" data-key="presta-total-feb"></td>
+                            <td><strong>Locknest</strong> <span style="color: var(--text-muted); font-size: 0.75rem;">(cles)</span></td>
+                            <td class="cell-mono">0</td>
+                            <td class="cell-mono">0</td>
+                            <td class="cell-mono">0</td>
+                            <td class="cell-mono">0</td>
+                            <td class="cell-mono">0</td>
+                            <td class="cell-mono">0 EUR</td>
                         </tr>
                         <tr>
-                            <td><strong>Mars 2026</strong></td>
-                            <td class="cell-mono"><input type="text" class="editable-cell" value="- EUR" data-key="presta-matthias-mar"></td>
-                            <td class="cell-mono"><input type="text" class="editable-cell" value="- EUR" data-key="presta-mkg-mar"></td>
-                            <td class="cell-mono"><input type="text" class="editable-cell" value="- EUR" data-key="presta-form-mar"></td>
-                            <td class="cell-mono"><input type="text" class="editable-cell" value="- EUR" data-key="presta-autres-mar"></td>
-                            <td class="cell-mono"><input type="text" class="editable-cell" value="- EUR" data-key="presta-total-mar"></td>
-                        </tr>
-                        <tr style="background: var(--mh-blue-dim);">
-                            <td><strong>Avril 2026</strong></td>
-                            <td class="cell-mono"><input type="text" class="editable-cell" value="- EUR" data-key="presta-matthias-apr"></td>
-                            <td class="cell-mono"><input type="text" class="editable-cell" value="- EUR" data-key="presta-mkg-apr"></td>
-                            <td class="cell-mono"><input type="text" class="editable-cell" value="- EUR" data-key="presta-form-apr"></td>
-                            <td class="cell-mono"><input type="text" class="editable-cell" value="- EUR" data-key="presta-autres-apr"></td>
-                            <td class="cell-mono cell-highlight"><input type="text" class="editable-cell" value="- EUR" data-key="presta-total-apr"></td>
+                            <td><strong>Eho Link</strong> <span style="color: var(--text-muted); font-size: 0.75rem;">(boitiers)</span></td>
+                            <td class="cell-mono">0</td>
+                            <td class="cell-mono">0</td>
+                            <td class="cell-mono">0</td>
+                            <td class="cell-mono">0</td>
+                            <td class="cell-mono">0</td>
+                            <td class="cell-mono">0 EUR</td>
                         </tr>
                         <tr style="background: var(--bg-input);">
-                            <td><strong>Cumul T1 + avril</strong></td>
-                            <td class="cell-mono"><input type="text" class="editable-cell" value="- EUR" data-key="presta-matthias-cumul"></td>
-                            <td class="cell-mono"><input type="text" class="editable-cell" value="- EUR" data-key="presta-mkg-cumul"></td>
-                            <td class="cell-mono"><input type="text" class="editable-cell" value="- EUR" data-key="presta-form-cumul"></td>
-                            <td class="cell-mono"><input type="text" class="editable-cell" value="- EUR" data-key="presta-autres-cumul"></td>
-                            <td class="cell-mono cell-highlight"><strong><input type="text" class="editable-cell" value="- EUR" data-key="presta-total-cumul"></strong></td>
+                            <td><strong>TOTAL one shot mat</strong></td>
+                            <td class="cell-mono"><strong>5 198</strong></td>
+                            <td class="cell-mono"><strong>17 660</strong></td>
+                            <td class="cell-mono"><strong>605</strong></td>
+                            <td class="cell-mono"><strong>750</strong></td>
+                            <td class="cell-mono"><strong>650</strong></td>
+                            <td class="cell-mono cell-highlight"><strong>24 863 EUR</strong></td>
                         </tr>
                     </tbody>
                 </table>
             </div>
 
-            <div class="alert" style="background: var(--accent-yellow-dim); border: 1px solid var(--accent-yellow); color: var(--text-primary);">
-                <span><strong>A renseigner :</strong> historique 2026 des prestations (Matthias + marketing + formation). Reference 2025 : Matthias 1 070 EUR, marketing 5 775 EUR, formation 1 200 EUR (source : Comptage - LA 2025.xlsx feuille PRESTA).</span>
+            <div class="data-table-container">
+                <div class="table-title">Prestations - detail par type (CA HT)</div>
+                <table class="data-table">
+                    <thead>
+                        <tr>
+                            <th>Type de presta</th>
+                            <th>Janvier</th>
+                            <th>Fevrier</th>
+                            <th>Mars</th>
+                            <th>Avril</th>
+                            <th>Mai</th>
+                            <th>Cumul</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><strong>Serenicity Formation</strong></td>
+                            <td class="cell-mono">150 EUR</td>
+                            <td class="cell-mono">0</td>
+                            <td class="cell-mono">0</td>
+                            <td class="cell-mono">150 EUR</td>
+                            <td class="cell-mono">0</td>
+                            <td class="cell-mono">300 EUR</td>
+                        </tr>
+                        <tr>
+                            <td><strong>MCYBER</strong> <span style="color: var(--text-muted); font-size: 0.75rem;">(pentest / audit)</span></td>
+                            <td class="cell-mono">0</td>
+                            <td class="cell-mono">0</td>
+                            <td class="cell-mono">0</td>
+                            <td class="cell-mono">0</td>
+                            <td class="cell-mono">240 EUR</td>
+                            <td class="cell-mono">240 EUR</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Matthias</strong> <span style="color: var(--text-muted); font-size: 0.75rem;">(consultant)</span></td>
+                            <td class="cell-mono">0</td>
+                            <td class="cell-mono">0</td>
+                            <td class="cell-mono">0</td>
+                            <td class="cell-mono">0</td>
+                            <td class="cell-mono">0</td>
+                            <td class="cell-mono">0 EUR</td>
+                        </tr>
+                        <tr style="background: var(--bg-input);">
+                            <td><strong>TOTAL prestations</strong></td>
+                            <td class="cell-mono"><strong>150</strong></td>
+                            <td class="cell-mono"><strong>0</strong></td>
+                            <td class="cell-mono"><strong>0</strong></td>
+                            <td class="cell-mono"><strong>150</strong></td>
+                            <td class="cell-mono"><strong>240</strong></td>
+                            <td class="cell-mono cell-highlight"><strong>540 EUR</strong></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <div class="alert info" style="margin-top: 0.75rem;">
+                <span><strong>Lecture :</strong> les prestations restent tres marginales (540 EUR sur 5 mois = ~110 EUR/mois). Le one shot materiel est porte exclusivement par Serenicity (boitiers Detoxio), avec une forte volatilite mensuelle (605 EUR en mars contre 17 660 EUR en fevrier). Le mois fevrier est exceptionnel, refait pas de tendance.</span>
             </div>
         </div>
 
@@ -1559,6 +1560,72 @@
                             <td class="cell-mono"><strong>~17 600 EUR</strong></td>
                             <td class="cell-mono"><strong>650 000 EUR/an</strong></td>
                             <td class="cell-mono">CA 2026 cible : 650 KEUR</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <div class="data-table-container">
+                <div class="table-title">Activite commerciale par fournisseur 2026 (source : LA 2026 - feuille COMPTAGE)</div>
+                <table class="data-table">
+                    <thead>
+                        <tr>
+                            <th>Fournisseur</th>
+                            <th>Commandes</th>
+                            <th>Nouveaux abos</th>
+                            <th>FAS / Boitiers</th>
+                            <th>Resiliations</th>
+                            <th>Net abos</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><strong>Detoxio</strong></td>
+                            <td class="cell-mono"><input type="text" class="editable-cell" value="32" data-key="cpt-detoxio-cmd"></td>
+                            <td class="cell-mono"><input type="text" class="editable-cell" value="23" data-key="cpt-detoxio-abo"></td>
+                            <td class="cell-mono"><input type="text" class="editable-cell" value="45" data-key="cpt-detoxio-fas"></td>
+                            <td class="cell-mono" style="color: var(--accent-red);"><input type="text" class="editable-cell" value="33" data-key="cpt-detoxio-res"></td>
+                            <td class="cell-mono cell-highlight" style="color: var(--accent-red);">-10</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Secuserve</strong></td>
+                            <td class="cell-mono"><input type="text" class="editable-cell" value="30" data-key="cpt-secuserve-cmd"></td>
+                            <td class="cell-mono"><input type="text" class="editable-cell" value="30" data-key="cpt-secuserve-abo"></td>
+                            <td class="cell-mono">-</td>
+                            <td class="cell-mono"><input type="text" class="editable-cell" value="0" data-key="cpt-secuserve-res"></td>
+                            <td class="cell-mono cell-highlight" style="color: var(--accent-green);">+30</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Sunbren</strong></td>
+                            <td class="cell-mono"><input type="text" class="editable-cell" value="6" data-key="cpt-sunbren-cmd"></td>
+                            <td class="cell-mono">-</td>
+                            <td class="cell-mono">-</td>
+                            <td class="cell-mono" style="color: var(--accent-red);"><input type="text" class="editable-cell" value="3" data-key="cpt-sunbren-res"></td>
+                            <td class="cell-mono cell-highlight" style="color: var(--accent-red);">-3</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Formation Detoxio</strong> <span style="color: var(--text-muted); font-size: 0.75rem;">(CONTROL/DTX)</span></td>
+                            <td class="cell-mono"><input type="text" class="editable-cell" value="3" data-key="cpt-formation-cmd"></td>
+                            <td class="cell-mono">-</td>
+                            <td class="cell-mono">3</td>
+                            <td class="cell-mono">-</td>
+                            <td class="cell-mono">-</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Locknest, Eho Link, Sxipher</strong></td>
+                            <td class="cell-mono">0</td>
+                            <td class="cell-mono">0</td>
+                            <td class="cell-mono">0</td>
+                            <td class="cell-mono">0</td>
+                            <td class="cell-mono" style="color: var(--text-muted);">-</td>
+                        </tr>
+                        <tr style="background: var(--bg-input);">
+                            <td><strong>TOTAL Janv-Mai 2026</strong></td>
+                            <td class="cell-mono"><strong>68</strong></td>
+                            <td class="cell-mono"><strong>53</strong></td>
+                            <td class="cell-mono"><strong>45</strong></td>
+                            <td class="cell-mono" style="color: var(--accent-red);"><strong>36</strong></td>
+                            <td class="cell-mono cell-highlight" style="color: var(--accent-green);"><strong>+17</strong></td>
                         </tr>
                     </tbody>
                 </table>
@@ -1738,7 +1805,7 @@
         document.getElementById('currentDate').textContent = now.toLocaleDateString('fr-FR', options);
 
         // Local storage
-        const STORAGE_KEY = 'marketime-dashboard-2026-v6';
+        const STORAGE_KEY = 'marketime-dashboard-2026-v7';
 
         function saveData() {
             const data = { values: {} };
