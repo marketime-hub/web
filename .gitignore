@@ -1,0 +1,36 @@
+# OS
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# Editeurs
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# Backups OneDrive
+*~
+~$*
+.~lock.*
+
+# Logs
+*.log
+
+# Secrets (au cas où)
+.env
+.env.*
+*.key
+*.pem
+
+# Pas de fichiers data confidentiels dans le repo
+*.xlsx
+*.xls
+*.docx
+*.pdf
+treso*
+LA\ 20*
+Comptage*
+
+# Fichier sauvegarde dashboard
+dashboard-pilotage-2026_backup_*

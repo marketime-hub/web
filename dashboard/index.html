@@ -1,0 +1,1777 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Marketime Hub - Pilotage 2026</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            /* Marketime Hub Brand Colors */
+            --mh-blue: #273096;
+            --mh-blue-light: #3a45b0;
+            --mh-blue-dark: #1a2066;
+            --mh-blue-dim: rgba(39, 48, 150, 0.1);
+            --mh-blue-glow: rgba(39, 48, 150, 0.15);
+
+            /* Backgrounds - Light theme */
+            --bg-primary: #f8f9fc;
+            --bg-secondary: #ffffff;
+            --bg-card: #ffffff;
+            --bg-card-hover: #f0f2f8;
+            --bg-input: #f5f6fa;
+
+            /* Borders */
+            --border: #e2e5f0;
+            --border-light: #ebeef5;
+            --border-focus: var(--mh-blue);
+
+            /* Text */
+            --text-primary: #1a1f36;
+            --text-secondary: #5a6178;
+            --text-muted: #8892a8;
+
+            /* Accents */
+            --accent-green: #10b981;
+            --accent-green-dim: rgba(16, 185, 129, 0.1);
+            --accent-yellow: #f59e0b;
+            --accent-yellow-dim: rgba(245, 158, 11, 0.1);
+            --accent-red: #ef4444;
+            --accent-red-dim: rgba(239, 68, 68, 0.1);
+            --accent-purple: #8b5cf6;
+            --accent-purple-dim: rgba(139, 92, 246, 0.1);
+
+            /* Effects */
+            --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.05);
+            --shadow-md: 0 4px 12px rgba(39, 48, 150, 0.08);
+            --shadow-lg: 0 8px 24px rgba(39, 48, 150, 0.12);
+            --radius-sm: 6px;
+            --radius-md: 10px;
+            --radius-lg: 14px;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Outfit', -apple-system, BlinkMacSystemFont, sans-serif;
+            background: var(--bg-primary);
+            color: var(--text-primary);
+            min-height: 100vh;
+            line-height: 1.5;
+        }
+
+        /* Header */
+        .header {
+            background: var(--mh-blue);
+            padding: 1rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            box-shadow: 0 2px 12px rgba(39, 48, 150, 0.3);
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+        }
+
+        .logo-icon {
+            width: 42px;
+            height: 42px;
+            background: white;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            font-size: 0.9rem;
+            color: var(--mh-blue);
+            letter-spacing: -0.5px;
+        }
+
+        .logo-text {
+            font-size: 1.35rem;
+            font-weight: 600;
+            color: white;
+            letter-spacing: -0.02em;
+        }
+
+        .logo-text span {
+            font-weight: 300;
+            opacity: 0.9;
+        }
+
+        .header-meta {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .current-date {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.8rem;
+            color: rgba(255, 255, 255, 0.8);
+            padding: 0.4rem 0.8rem;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 6px;
+        }
+
+        /* Navigation Tabs */
+        .nav-tabs {
+            display: flex;
+            background: var(--bg-secondary);
+            border-bottom: 1px solid var(--border);
+            padding: 0 2rem;
+            gap: 0.25rem;
+            overflow-x: auto;
+        }
+
+        .nav-tab {
+            padding: 1rem 1.25rem;
+            font-size: 0.875rem;
+            font-weight: 500;
+            color: var(--text-secondary);
+            background: transparent;
+            border: none;
+            cursor: pointer;
+            position: relative;
+            transition: all 0.2s ease;
+            white-space: nowrap;
+        }
+
+        .nav-tab:hover {
+            color: var(--text-primary);
+            background: var(--bg-input);
+        }
+
+        .nav-tab.active {
+            color: var(--mh-blue);
+            font-weight: 600;
+        }
+
+        .nav-tab.active::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            height: 3px;
+            background: var(--mh-blue);
+            border-radius: 3px 3px 0 0;
+        }
+
+        /* Main Content */
+        .main-content {
+            padding: 1.5rem 2rem;
+            max-width: 1600px;
+            margin: 0 auto;
+        }
+
+        .tab-content {
+            display: none;
+            animation: fadeIn 0.3s ease;
+        }
+
+        .tab-content.active {
+            display: block;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(8px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* Section Headers */
+        .section-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 1.25rem;
+        }
+
+        .section-title {
+            font-size: 1.4rem;
+            font-weight: 600;
+            color: var(--text-primary);
+            letter-spacing: -0.02em;
+        }
+
+        .section-subtitle {
+            color: var(--text-secondary);
+            font-size: 0.875rem;
+            margin-top: 0.2rem;
+        }
+
+        /* KPI Cards Grid */
+        .kpi-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 1rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .kpi-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: var(--radius-lg);
+            padding: 1.25rem;
+            position: relative;
+            transition: all 0.2s ease;
+            box-shadow: var(--shadow-sm);
+        }
+
+        .kpi-card:hover {
+            border-color: var(--mh-blue);
+            box-shadow: var(--shadow-md);
+            transform: translateY(-2px);
+        }
+
+        .kpi-card.highlight {
+            border-left: 4px solid var(--mh-blue);
+        }
+
+        .kpi-label {
+            font-size: 0.7rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.08em;
+            color: var(--text-muted);
+            margin-bottom: 0.5rem;
+            display: flex;
+            align-items: center;
+            gap: 0.4rem;
+        }
+
+        .kpi-value {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 1.75rem;
+            font-weight: 600;
+            color: var(--text-primary);
+            line-height: 1.2;
+        }
+
+        .kpi-value.editable {
+            background: transparent;
+            border: none;
+            outline: none;
+            width: 100%;
+            cursor: text;
+            padding: 0.2rem 0;
+            border-bottom: 2px dashed transparent;
+            transition: all 0.2s ease;
+        }
+
+        .kpi-value.editable:hover {
+            border-bottom-color: var(--border);
+        }
+
+        .kpi-value.editable:focus {
+            border-bottom-color: var(--mh-blue);
+            background: var(--mh-blue-dim);
+            border-radius: 4px;
+            padding-left: 0.5rem;
+        }
+
+        .kpi-meta {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-top: 0.75rem;
+            padding-top: 0.75rem;
+            border-top: 1px solid var(--border-light);
+        }
+
+        .kpi-target {
+            font-size: 0.7rem;
+            color: var(--text-muted);
+        }
+
+        .kpi-status {
+            display: flex;
+            align-items: center;
+            gap: 0.3rem;
+            font-size: 0.7rem;
+            font-weight: 600;
+            padding: 0.2rem 0.5rem;
+            border-radius: 10px;
+        }
+
+        .kpi-status.green { background: var(--accent-green-dim); color: var(--accent-green); }
+        .kpi-status.yellow { background: var(--accent-yellow-dim); color: var(--accent-yellow); }
+        .kpi-status.red { background: var(--accent-red-dim); color: var(--accent-red); }
+
+        .status-dot {
+            width: 5px;
+            height: 5px;
+            border-radius: 50%;
+            background: currentColor;
+        }
+
+        /* Progress Section */
+        .progress-section {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: var(--radius-lg);
+            padding: 1.25rem;
+            margin-bottom: 1.5rem;
+            box-shadow: var(--shadow-sm);
+        }
+
+        .progress-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-end;
+            margin-bottom: 0.75rem;
+        }
+
+        .progress-title {
+            font-size: 0.95rem;
+            font-weight: 600;
+            color: var(--text-primary);
+        }
+
+        .progress-values {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.85rem;
+        }
+
+        .progress-current { color: var(--mh-blue); font-weight: 600; }
+        .progress-target { color: var(--text-muted); }
+
+        .progress-bar-container {
+            height: 10px;
+            background: var(--bg-input);
+            border-radius: 5px;
+            overflow: hidden;
+        }
+
+        .progress-bar {
+            height: 100%;
+            background: linear-gradient(135deg, var(--mh-blue) 0%, var(--mh-blue-light) 100%);
+            border-radius: 5px;
+            transition: width 0.5s ease;
+            position: relative;
+        }
+
+        .progress-bar::after {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; right: 0; bottom: 0;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.3), transparent);
+            animation: shimmer 2s infinite;
+        }
+
+        @keyframes shimmer {
+            0% { transform: translateX(-100%); }
+            100% { transform: translateX(100%); }
+        }
+
+        .progress-milestones {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 0.4rem;
+            font-size: 0.6rem;
+            color: var(--text-muted);
+            font-family: 'JetBrains Mono', monospace;
+        }
+
+        /* Data Tables */
+        .data-table-container {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: var(--radius-lg);
+            overflow: hidden;
+            margin-bottom: 1.5rem;
+            box-shadow: var(--shadow-sm);
+        }
+
+        .table-title {
+            padding: 1rem 1.25rem;
+            font-size: 0.95rem;
+            font-weight: 600;
+            background: var(--bg-input);
+            border-bottom: 1px solid var(--border);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .data-table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        .data-table thead {
+            background: var(--bg-input);
+        }
+
+        .data-table th {
+            padding: 0.85rem 1rem;
+            text-align: left;
+            font-size: 0.7rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            color: var(--text-muted);
+            border-bottom: 1px solid var(--border);
+        }
+
+        .data-table td {
+            padding: 0.85rem 1rem;
+            border-bottom: 1px solid var(--border-light);
+            font-size: 0.85rem;
+        }
+
+        .data-table tbody tr:last-child td { border-bottom: none; }
+        .data-table tbody tr:hover { background: var(--bg-card-hover); }
+
+        .data-table .editable-cell {
+            background: transparent;
+            border: none;
+            color: var(--text-primary);
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.85rem;
+            width: 100%;
+            padding: 0.3rem 0.5rem;
+            border-radius: var(--radius-sm);
+            transition: all 0.2s ease;
+        }
+
+        .data-table .editable-cell:hover { background: var(--bg-input); }
+        .data-table .editable-cell:focus {
+            outline: none;
+            background: var(--mh-blue-dim);
+            box-shadow: 0 0 0 2px var(--mh-blue);
+        }
+
+        .cell-mono { font-family: 'JetBrains Mono', monospace; }
+        .cell-highlight { color: var(--mh-blue); font-weight: 600; }
+        .cell-positive { color: var(--accent-green); }
+        .cell-negative { color: var(--accent-red); }
+
+        /* Alerts */
+        .alert {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            padding: 0.85rem 1rem;
+            border-radius: var(--radius-md);
+            font-size: 0.85rem;
+            margin-bottom: 1rem;
+        }
+
+        .alert.info {
+            background: var(--mh-blue-dim);
+            border: 1px solid rgba(39, 48, 150, 0.2);
+            color: var(--mh-blue-dark);
+        }
+
+        .alert.warning {
+            background: var(--accent-yellow-dim);
+            border: 1px solid rgba(245, 158, 11, 0.2);
+        }
+
+        .alert.success {
+            background: var(--accent-green-dim);
+            border: 1px solid rgba(16, 185, 129, 0.2);
+        }
+
+        /* Settings Panel */
+        .settings-panel {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: var(--radius-lg);
+            padding: 1.25rem;
+            margin-bottom: 1.5rem;
+            box-shadow: var(--shadow-sm);
+        }
+
+        .settings-title {
+            font-size: 0.95rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .settings-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1rem;
+        }
+
+        .setting-item {
+            display: flex;
+            flex-direction: column;
+            gap: 0.35rem;
+        }
+
+        .setting-label {
+            font-size: 0.7rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            color: var(--text-muted);
+        }
+
+        .setting-input {
+            background: var(--bg-input);
+            border: 1px solid var(--border);
+            border-radius: var(--radius-sm);
+            padding: 0.5rem 0.75rem;
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.85rem;
+            color: var(--text-primary);
+            transition: all 0.2s ease;
+        }
+
+        .setting-input:focus {
+            outline: none;
+            border-color: var(--mh-blue);
+            box-shadow: 0 0 0 3px var(--mh-blue-dim);
+        }
+
+        /* Commission Cards */
+        .commission-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 1rem;
+        }
+
+        .commission-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: var(--radius-lg);
+            overflow: hidden;
+            box-shadow: var(--shadow-sm);
+            transition: all 0.2s ease;
+        }
+
+        .commission-card:hover {
+            box-shadow: var(--shadow-md);
+            transform: translateY(-2px);
+        }
+
+        .commission-header {
+            padding: 1rem;
+            background: var(--mh-blue);
+            color: white;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .commission-name {
+            font-weight: 600;
+            font-size: 1rem;
+        }
+
+        .commission-role {
+            font-size: 0.7rem;
+            opacity: 0.8;
+        }
+
+        .commission-total {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 1.15rem;
+            font-weight: 600;
+        }
+
+        .commission-body {
+            padding: 1rem;
+        }
+
+        .commission-row {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0.5rem 0;
+            border-bottom: 1px solid var(--border-light);
+        }
+
+        .commission-row:last-child { border-bottom: none; }
+
+        .commission-row-label {
+            font-size: 0.8rem;
+            color: var(--text-secondary);
+            display: flex;
+            align-items: center;
+            gap: 0.3rem;
+        }
+
+        .commission-row-value {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.85rem;
+            font-weight: 500;
+        }
+
+        .commission-row-input {
+            background: var(--bg-input);
+            border: 1px solid var(--border);
+            border-radius: 4px;
+            padding: 0.2rem 0.4rem;
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.8rem;
+            width: 60px;
+            text-align: right;
+        }
+
+        .commission-row-input:focus {
+            outline: none;
+            border-color: var(--mh-blue);
+        }
+
+        /* Actions List */
+        .actions-list {
+            display: flex;
+            flex-direction: column;
+            gap: 0.5rem;
+        }
+
+        .action-item {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            padding: 0.85rem 1rem;
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: var(--radius-md);
+            transition: all 0.2s ease;
+            box-shadow: var(--shadow-sm);
+        }
+
+        .action-item:hover {
+            border-color: var(--mh-blue);
+            background: var(--bg-card-hover);
+        }
+
+        .action-checkbox {
+            width: 20px;
+            height: 20px;
+            border: 2px solid var(--border);
+            border-radius: 4px;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+        }
+
+        .action-checkbox:hover { border-color: var(--mh-blue); }
+
+        .action-checkbox.checked {
+            background: var(--accent-green);
+            border-color: var(--accent-green);
+        }
+
+        .action-checkbox.checked::after {
+            content: '✓';
+            color: white;
+            font-size: 0.7rem;
+            font-weight: 700;
+        }
+
+        .action-content { flex: 1; }
+
+        .action-title {
+            font-weight: 500;
+            font-size: 0.9rem;
+            margin-bottom: 0.15rem;
+        }
+
+        .action-item.completed .action-title {
+            text-decoration: line-through;
+            color: var(--text-muted);
+        }
+
+        .action-meta {
+            display: flex;
+            gap: 0.75rem;
+            font-size: 0.7rem;
+            color: var(--text-muted);
+        }
+
+        .priority-badge {
+            padding: 0.2rem 0.5rem;
+            border-radius: 4px;
+            font-size: 0.6rem;
+            font-weight: 600;
+            text-transform: uppercase;
+        }
+
+        .priority-badge.high { background: var(--accent-red-dim); color: var(--accent-red); }
+        .priority-badge.medium { background: var(--accent-yellow-dim); color: var(--accent-yellow); }
+        .priority-badge.low { background: var(--accent-green-dim); color: var(--accent-green); }
+
+        /* Footer */
+        .footer {
+            padding: 1rem 2rem;
+            border-top: 1px solid var(--border);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-size: 0.75rem;
+            color: var(--text-muted);
+            background: var(--bg-secondary);
+        }
+
+        .save-indicator {
+            display: flex;
+            align-items: center;
+            gap: 0.4rem;
+        }
+
+        .save-dot {
+            width: 7px;
+            height: 7px;
+            border-radius: 50%;
+            background: var(--accent-green);
+        }
+
+        .save-dot.saving {
+            background: var(--accent-yellow);
+            animation: pulse 1s infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.5; }
+        }
+
+        /* MRR Breakdown */
+        .mrr-breakdown {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+            gap: 0.75rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .mrr-item {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: var(--radius-md);
+            padding: 1rem;
+            box-shadow: var(--shadow-sm);
+        }
+
+        .mrr-item-label {
+            font-size: 0.7rem;
+            font-weight: 600;
+            color: var(--text-secondary);
+            margin-bottom: 0.3rem;
+        }
+
+        .mrr-item-value {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 1.15rem;
+            font-weight: 600;
+        }
+
+        .mrr-item-change {
+            font-size: 0.7rem;
+            margin-top: 0.3rem;
+        }
+
+        .mrr-item-change.positive { color: var(--accent-green); }
+        .mrr-item-change.negative { color: var(--accent-red); }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .header {
+                padding: 0.75rem 1rem;
+                flex-wrap: wrap;
+                gap: 0.75rem;
+            }
+            .header-meta { width: 100%; justify-content: space-between; }
+            .nav-tabs { padding: 0 1rem; }
+            .main-content { padding: 1rem; }
+            .kpi-value { font-size: 1.4rem; }
+        }
+
+        /* Print */
+        @media print {
+            .header, .nav-tabs, .footer { display: none; }
+            .main-content { padding: 0; }
+            .tab-content { display: block !important; page-break-after: always; }
+        }
+
+        /* Login Screen */
+        .login-screen {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: var(--mh-blue);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 1000;
+        }
+
+        .login-screen.hidden {
+            display: none;
+        }
+
+        .login-box {
+            background: white;
+            padding: 2.5rem;
+            border-radius: var(--radius-lg);
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+            text-align: center;
+            max-width: 380px;
+            width: 90%;
+        }
+
+        .login-logo {
+            width: 60px;
+            height: 60px;
+            background: var(--mh-blue);
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            font-size: 1.2rem;
+            color: white;
+            margin: 0 auto 1.5rem;
+        }
+
+        .login-title {
+            font-size: 1.5rem;
+            font-weight: 600;
+            color: var(--text-primary);
+            margin-bottom: 0.5rem;
+        }
+
+        .login-subtitle {
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .login-input {
+            width: 100%;
+            padding: 0.85rem 1rem;
+            border: 2px solid var(--border);
+            border-radius: var(--radius-md);
+            font-size: 1rem;
+            text-align: center;
+            letter-spacing: 0.1em;
+            transition: all 0.2s ease;
+        }
+
+        .login-input:focus {
+            outline: none;
+            border-color: var(--mh-blue);
+            box-shadow: 0 0 0 4px var(--mh-blue-dim);
+        }
+
+        .login-input.error {
+            border-color: var(--accent-red);
+            animation: shake 0.4s ease;
+        }
+
+        @keyframes shake {
+            0%, 100% { transform: translateX(0); }
+            25% { transform: translateX(-8px); }
+            75% { transform: translateX(8px); }
+        }
+
+        .login-btn {
+            width: 100%;
+            padding: 0.85rem;
+            background: var(--mh-blue);
+            color: white;
+            border: none;
+            border-radius: var(--radius-md);
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            margin-top: 1rem;
+            transition: all 0.2s ease;
+        }
+
+        .login-btn:hover {
+            background: var(--mh-blue-dark);
+        }
+
+        .login-error {
+            color: var(--accent-red);
+            font-size: 0.85rem;
+            margin-top: 0.75rem;
+            display: none;
+        }
+
+        .login-error.visible {
+            display: block;
+        }
+
+        .app-content {
+            display: none;
+        }
+
+        .app-content.visible {
+            display: block;
+        }
+    </style>
+</head>
+<body>
+    <!-- Login Screen -->
+    <div class="login-screen" id="loginScreen">
+        <div class="login-box">
+            <div class="login-logo">MH</div>
+            <div class="login-title">Marketime Hub</div>
+            <div class="login-subtitle">Dashboard de pilotage 2026</div>
+            <input type="password" class="login-input" id="passwordInput" placeholder="Mot de passe" onkeypress="if(event.key==='Enter')checkPassword()">
+            <button class="login-btn" onclick="checkPassword()">Acceder</button>
+            <div class="login-error" id="loginError">Mot de passe incorrect</div>
+        </div>
+    </div>
+
+    <!-- App Content -->
+    <div class="app-content" id="appContent">
+    <header class="header">
+        <div class="logo">
+            <div class="logo-icon">MH</div>
+            <div class="logo-text">Marketime <span>Hub</span></div>
+        </div>
+        <div class="header-meta">
+            <div class="current-date" id="currentDate"></div>
+        </div>
+    </header>
+
+    <nav class="nav-tabs">
+        <button class="nav-tab active" data-tab="direction">Direction</button>
+        <button class="nav-tab" data-tab="mrr">MRR</button>
+        <button class="nav-tab" data-tab="oneshot">One shot &amp; Prestations</button>
+        <button class="nav-tab" data-tab="commercial">Commercial</button>
+    </nav>
+
+    <main class="main-content">
+        <!-- TAB: Direction -->
+        <div class="tab-content active" id="tab-direction">
+            <div class="section-header">
+                <div>
+                    <h1 class="section-title">Vue Direction</h1>
+                    <p class="section-subtitle">Mois en cours : <input type="text" class="editable-cell" style="width: 110px; display: inline; border: none; background: transparent;" value="Avril 2026" data-key="mois-courant"></p>
+                </div>
+            </div>
+
+            <div class="kpi-grid">
+                <div class="kpi-card highlight">
+                    <div class="kpi-label">Marge recurrente mensuelle</div>
+                    <input type="text" class="kpi-value editable" value="8 071 EUR" data-key="kpi-marge-recurrente">
+                    <div class="kpi-meta">
+                        <span class="kpi-target">Couverture charges structure : 12 894 EUR</span>
+                        <span class="kpi-status yellow"><span class="status-dot"></span> 63%</span>
+                    </div>
+                </div>
+
+                <div class="kpi-card highlight">
+                    <div class="kpi-label">Marge proratisee (PCA-CCA)</div>
+                    <input type="text" class="kpi-value editable" value="- EUR" data-key="kpi-marge-proratisee">
+                    <div class="kpi-meta">
+                        <span class="kpi-target">Calcul Eva : delta PCA - CCA</span>
+                        <span class="kpi-status" style="background: var(--bg-input); color: var(--text-muted);"><span class="status-dot"></span> A renseigner</span>
+                    </div>
+                </div>
+
+                <div class="kpi-card highlight" style="opacity: 0.6;">
+                    <div class="kpi-label">One shot marchandises (mois)</div>
+                    <input type="text" class="kpi-value editable" value="- EUR" data-key="kpi-oneshot-mois">
+                    <div class="kpi-meta">
+                        <span class="kpi-target">En attente onglet comptage Eva</span>
+                        <span class="kpi-status" style="background: var(--bg-input); color: var(--text-muted);"><span class="status-dot"></span> A ventiler</span>
+                    </div>
+                </div>
+
+                <div class="kpi-card highlight">
+                    <div class="kpi-label">Prestations de services (mois)</div>
+                    <input type="text" class="kpi-value editable" value="- EUR" data-key="kpi-prestations-mois">
+                    <div class="kpi-meta">
+                        <span class="kpi-target">Matthias + mkg + formation</span>
+                        <span class="kpi-status" style="background: var(--bg-input); color: var(--text-muted);"><span class="status-dot"></span> A renseigner</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="section-header" style="margin-top: 0.5rem;">
+                <div>
+                    <h2 class="section-title" style="font-size: 1rem; color: var(--text-secondary);">Indicateurs financiers correles</h2>
+                </div>
+            </div>
+
+            <div class="kpi-grid">
+                <div class="kpi-card">
+                    <div class="kpi-label">Solde banque (18/05)</div>
+                    <input type="text" class="kpi-value editable" value="10 677 EUR" data-key="tresorerie">
+                    <div class="kpi-meta">
+                        <span class="kpi-target">Projection 31/05 : 4 830 EUR</span>
+                        <span class="kpi-status yellow"><span class="status-dot"></span> CCA Jerome en cours</span>
+                    </div>
+                </div>
+
+                <div class="kpi-card">
+                    <div class="kpi-label">CA cumule 2026 (avril)</div>
+                    <input type="text" class="kpi-value editable" value="143 919 EUR" data-key="ca-cumul">
+                    <div class="kpi-meta">
+                        <span class="kpi-target">Cible : 650 000 EUR</span>
+                        <span class="kpi-status yellow"><span class="status-dot"></span> 22%</span>
+                    </div>
+                </div>
+
+                <div class="kpi-card">
+                    <div class="kpi-label">Marge produit cumulee (avril)</div>
+                    <input type="text" class="kpi-value editable" value="31 814 EUR" data-key="marge-cumul">
+                    <div class="kpi-meta">
+                        <span class="kpi-target">Cible : 250 000 EUR</span>
+                        <span class="kpi-status yellow"><span class="status-dot"></span> 13%</span>
+                    </div>
+                </div>
+
+                <div class="kpi-card">
+                    <div class="kpi-label">Abonnements Detoxio</div>
+                    <input type="text" class="kpi-value editable" value="427" data-key="abos-detoxio-tot">
+                    <div class="kpi-meta">
+                        <span class="kpi-target">Cible : 650 abos</span>
+                        <span class="kpi-status yellow"><span class="status-dot"></span> 66%</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="progress-section">
+                <div class="progress-header">
+                    <div class="progress-title">Couverture charges structure MH v2 (avec Florian + Cult portage CCA)</div>
+                    <div class="progress-values">
+                        <span class="progress-current">8 071 EUR</span>
+                        <span class="progress-target"> / 12 894 EUR (charges fixes structure)</span>
+                    </div>
+                </div>
+                <div class="progress-bar-container">
+                    <div class="progress-bar" style="width: 63%; background: linear-gradient(135deg, var(--accent-yellow) 0%, #d97706 100%);"></div>
+                </div>
+                <div class="progress-milestones">
+                    <span>0 EUR</span>
+                    <span>3K</span>
+                    <span>6,5K</span>
+                    <span>9,5K</span>
+                    <span>13K (break-even)</span>
+                </div>
+                <div style="margin-top: 0.75rem; padding: 0.75rem; background: var(--accent-yellow-dim); border-radius: var(--radius-sm); font-size: 0.85rem; color: var(--text-secondary);">
+                    <strong style="color: var(--accent-yellow);">Break-even MRR a 63% — couverture flux treso a completer par le one shot et les prestas.</strong>
+                    Hypotheses : Florian reste (+3 357 EUR/mois cout employeur + 100 EUR TR), Cult mkg en portage CCA jusqu'a aout (1 750 EUR), Eva en alternance, AG2R reduit. En flux pur (sans Cult) : 11 144 EUR cible, 72% couvert. Mai 2026 : pas de facturation Cult (decale juin) + IK exceptionnels. Source : <em>projection-treso-MH.html</em>.
+                </div>
+            </div>
+        </div>
+
+        <!-- TAB: MRR -->
+        <div class="tab-content" id="tab-mrr">
+            <div class="section-header">
+                <div>
+                    <h1 class="section-title">Suivi MRR</h1>
+                    <p class="section-subtitle">Marge recurrente mensuelle par fournisseur et engagement (source : LA 2026 - feuille ABONNEMENT)</p>
+                </div>
+            </div>
+
+            <div class="mrr-breakdown">
+                <div class="mrr-item">
+                    <div class="mrr-item-label">Revenu recurrent mensuel HT</div>
+                    <input type="text" class="kpi-value editable" style="font-size: 1.15rem;" value="15 453 EUR" data-key="mrr-revenu">
+                    <div class="mrr-item-change">HT, avril 2026 (pilotage)</div>
+                </div>
+                <div class="mrr-item" style="background: var(--mh-blue-dim); border-color: var(--mh-blue);">
+                    <div class="mrr-item-label">= Marge recurrente mensuelle</div>
+                    <div class="mrr-item-value" style="color: var(--mh-blue);">8 071 EUR</div>
+                    <div class="mrr-item-change">536 abonnements actifs (etat 12/05)</div>
+                </div>
+                <div class="mrr-item">
+                    <div class="mrr-item-label">Cible structure MH v2</div>
+                    <input type="text" class="kpi-value editable" style="font-size: 1.15rem;" value="12 894 EUR" data-key="mrr-cible">
+                    <div class="mrr-item-change">63% (avec Florian + Cult portage)</div>
+                </div>
+                <div class="mrr-item">
+                    <div class="mrr-item-label">Variation vs mois precedent</div>
+                    <input type="text" class="kpi-value editable" style="font-size: 1.15rem; color: var(--accent-red);" value="-93 EUR" data-key="mrr-delta">
+                    <div class="mrr-item-change negative">vs mars 15 546 EUR HT</div>
+                </div>
+            </div>
+
+            <div class="alert" style="background: var(--mh-blue-dim); border: 1px solid var(--mh-blue); color: var(--text-primary); margin-bottom: 1rem;">
+                <span><strong>HT vs TTC :</strong> les donnees Odoo et le LA 2026 (feuille ABONNEMENT) sont en <strong>HT</strong> (utilise pour le pilotage marge/objectifs). Le <strong>TTC</strong> correspond au flux tresorerie reel (= ce qui est preleve sur le compte client). Avril 2026 : 15 453 EUR HT = <strong>18 544 EUR TTC</strong> (encaissements recurrents). Mai 2026 : 15 041 EUR HT = <strong>18 050 EUR TTC</strong>. Source flux : <em>treso jour.xlsx</em>.</span>
+            </div>
+
+            <div class="data-table-container">
+                <div class="table-title">Evolution mensuelle 2026 (revenu recurrent HT / TTC pour flux treso)</div>
+                <table class="data-table">
+                    <thead>
+                        <tr>
+                            <th>Mois</th>
+                            <th>Revenu HT (pilotage)</th>
+                            <th>Revenu TTC (flux treso)</th>
+                            <th>Variation HT</th>
+                            <th>Visualisation</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><strong>Janvier 2026</strong></td>
+                            <td class="cell-mono"><input type="text" class="editable-cell" value="14 651 EUR" data-key="mrr-jan-ht"></td>
+                            <td class="cell-mono" style="color: var(--text-muted);">17 581 EUR</td>
+                            <td class="cell-mono" style="color: var(--text-muted);">-</td>
+                            <td><div style="background: var(--bg-input); border-radius: 4px; height: 18px; position: relative;"><div style="background: var(--mh-blue); height: 100%; width: 88%; border-radius: 4px;"></div></div></td>
+                        </tr>
+                        <tr>
+                            <td><strong>Fevrier 2026</strong></td>
+                            <td class="cell-mono"><input type="text" class="editable-cell" value="15 007 EUR" data-key="mrr-feb-ht"></td>
+                            <td class="cell-mono" style="color: var(--text-muted);">18 008 EUR</td>
+                            <td class="cell-mono" style="color: var(--accent-green);">+356 EUR</td>
+                            <td><div style="background: var(--bg-input); border-radius: 4px; height: 18px; position: relative;"><div style="background: var(--mh-blue); height: 100%; width: 90%; border-radius: 4px;"></div></div></td>
+                        </tr>
+                        <tr>
+                            <td><strong>Mars 2026</strong></td>
+                            <td class="cell-mono"><input type="text" class="editable-cell" value="15 546 EUR" data-key="mrr-mar-ht"></td>
+                            <td class="cell-mono" style="color: var(--text-muted);">18 655 EUR</td>
+                            <td class="cell-mono" style="color: var(--accent-green);">+539 EUR</td>
+                            <td><div style="background: var(--bg-input); border-radius: 4px; height: 18px; position: relative;"><div style="background: var(--mh-blue); height: 100%; width: 93%; border-radius: 4px;"></div></div></td>
+                        </tr>
+                        <tr style="background: var(--mh-blue-dim);">
+                            <td><strong>Avril 2026</strong></td>
+                            <td class="cell-mono cell-highlight"><input type="text" class="editable-cell" value="15 453 EUR" data-key="mrr-apr-ht"></td>
+                            <td class="cell-mono" style="color: var(--text-muted);">18 544 EUR</td>
+                            <td class="cell-mono" style="color: var(--accent-red);">-93 EUR</td>
+                            <td><div style="background: var(--bg-input); border-radius: 4px; height: 18px; position: relative;"><div style="background: var(--mh-blue); height: 100%; width: 93%; border-radius: 4px;"></div></div></td>
+                        </tr>
+                        <tr>
+                            <td><strong>Mai 2026</strong> <span style="color: var(--text-muted); font-size: 0.75rem;">(en cours)</span></td>
+                            <td class="cell-mono"><input type="text" class="editable-cell" value="15 041 EUR" data-key="mrr-may-ht"></td>
+                            <td class="cell-mono" style="color: var(--text-muted);">18 050 EUR</td>
+                            <td class="cell-mono" style="color: var(--accent-red);">-412 EUR</td>
+                            <td><div style="background: var(--bg-input); border-radius: 4px; height: 18px; position: relative;"><div style="background: var(--mh-blue); height: 100%; width: 90%; border-radius: 4px;"></div></div></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <div class="data-table-container">
+                <div class="table-title">Marge recurrente par fournisseur (etat au 12/05/2026)</div>
+                <table class="data-table">
+                    <thead>
+                        <tr>
+                            <th>Fournisseur</th>
+                            <th>Abonnements</th>
+                            <th>Revenu recurrent HT</th>
+                            <th>Marge recurrente</th>
+                            <th>% du total</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><strong>Detoxio</strong></td>
+                            <td class="cell-mono"><input type="text" class="editable-cell" value="427" data-key="mrr-abos-detoxio"></td>
+                            <td class="cell-mono"><input type="text" class="editable-cell" value="15 041 EUR" data-key="mrr-rev-detoxio"></td>
+                            <td class="cell-mono cell-highlight"><input type="text" class="editable-cell" value="6 956 EUR" data-key="mrr-marge-detoxio"></td>
+                            <td class="cell-mono">86,2%</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Sunbren</strong></td>
+                            <td class="cell-mono"><input type="text" class="editable-cell" value="23" data-key="mrr-abos-sunbren"></td>
+                            <td class="cell-mono"><input type="text" class="editable-cell" value="5 633 EUR" data-key="mrr-rev-sunbren"></td>
+                            <td class="cell-mono"><input type="text" class="editable-cell" value="862 EUR" data-key="mrr-rev-sunbren-marge"></td>
+                            <td class="cell-mono">10,7%</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Secuserve</strong></td>
+                            <td class="cell-mono"><input type="text" class="editable-cell" value="81" data-key="mrr-abos-secuserve"></td>
+                            <td class="cell-mono"><input type="text" class="editable-cell" value="529 EUR" data-key="mrr-rev-secuserve"></td>
+                            <td class="cell-mono"><input type="text" class="editable-cell" value="345 EUR" data-key="mrr-marge-secuserve"></td>
+                            <td class="cell-mono">4,3%</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Scuba</strong></td>
+                            <td class="cell-mono"><input type="text" class="editable-cell" value="1" data-key="mrr-abos-scuba"></td>
+                            <td class="cell-mono"><input type="text" class="editable-cell" value="355 EUR" data-key="mrr-rev-scuba"></td>
+                            <td class="cell-mono"><input type="text" class="editable-cell" value="31 EUR" data-key="mrr-marge-scuba"></td>
+                            <td class="cell-mono">0,4%</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Sxipher</strong></td>
+                            <td class="cell-mono"><input type="text" class="editable-cell" value="4" data-key="mrr-abos-sxipher"></td>
+                            <td class="cell-mono"><input type="text" class="editable-cell" value="877 EUR" data-key="mrr-rev-sxipher"></td>
+                            <td class="cell-mono" style="color: var(--accent-red);"><input type="text" class="editable-cell" value="-123 EUR" data-key="mrr-marge-sxipher"></td>
+                            <td class="cell-mono" style="color: var(--accent-red);">-1,5%</td>
+                        </tr>
+                        <tr style="background: var(--bg-input);">
+                            <td><strong>TOTAL</strong></td>
+                            <td class="cell-mono"><strong>536</strong></td>
+                            <td class="cell-mono"><strong>22 435 EUR</strong></td>
+                            <td class="cell-mono cell-highlight"><strong>8 071 EUR</strong></td>
+                            <td class="cell-mono"><strong>100%</strong></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <div class="data-table-container">
+                <div class="table-title">Detoxio : detail par duree d'engagement</div>
+                <table class="data-table">
+                    <thead>
+                        <tr>
+                            <th>Engagement</th>
+                            <th>Nb abos</th>
+                            <th>Marge totale</th>
+                            <th>Marge mensuelle proratisee</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Mensuel</td>
+                            <td class="cell-mono">134</td>
+                            <td class="cell-mono">2 623 EUR</td>
+                            <td class="cell-mono cell-highlight">2 623 EUR</td>
+                        </tr>
+                        <tr>
+                            <td>12 mois</td>
+                            <td class="cell-mono">97</td>
+                            <td class="cell-mono">14 793 EUR</td>
+                            <td class="cell-mono cell-highlight">1 233 EUR</td>
+                        </tr>
+                        <tr>
+                            <td>24 mois</td>
+                            <td class="cell-mono">2</td>
+                            <td class="cell-mono">1 080 EUR</td>
+                            <td class="cell-mono cell-highlight">45 EUR</td>
+                        </tr>
+                        <tr>
+                            <td>36 mois</td>
+                            <td class="cell-mono">26</td>
+                            <td class="cell-mono">21 791 EUR</td>
+                            <td class="cell-mono cell-highlight">605 EUR</td>
+                        </tr>
+                        <tr>
+                            <td>48 mois</td>
+                            <td class="cell-mono">24</td>
+                            <td class="cell-mono">15 233 EUR</td>
+                            <td class="cell-mono cell-highlight">317 EUR</td>
+                        </tr>
+                        <tr>
+                            <td>60 mois</td>
+                            <td class="cell-mono">12</td>
+                            <td class="cell-mono">10 528 EUR</td>
+                            <td class="cell-mono cell-highlight">175 EUR</td>
+                        </tr>
+                        <tr>
+                            <td>63 mois</td>
+                            <td class="cell-mono">126</td>
+                            <td class="cell-mono">119 498 EUR</td>
+                            <td class="cell-mono cell-highlight">1 897 EUR</td>
+                        </tr>
+                        <tr>
+                            <td>66 mois</td>
+                            <td class="cell-mono">6</td>
+                            <td class="cell-mono">3 988 EUR</td>
+                            <td class="cell-mono cell-highlight">60 EUR</td>
+                        </tr>
+                        <tr style="background: var(--bg-input);">
+                            <td><strong>TOTAL Detoxio</strong></td>
+                            <td class="cell-mono"><strong>427</strong></td>
+                            <td class="cell-mono"><strong>189 534 EUR</strong></td>
+                            <td class="cell-mono cell-highlight"><strong>6 956 EUR</strong></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <!-- TAB: One shot & Prestations -->
+        <div class="tab-content" id="tab-oneshot">
+            <div class="section-header">
+                <div>
+                    <h1 class="section-title">One shot &amp; Prestations</h1>
+                    <p class="section-subtitle">Ventes ponctuelles (boitiers, materiel) et prestations de services - source : LA 2026 + comptage Odoo</p>
+                </div>
+            </div>
+
+            <div class="alert" style="background: var(--accent-yellow-dim); border: 1px solid var(--accent-yellow); color: var(--text-primary);">
+                <span><strong>En attente du retraitement Eva.</strong> Le LA 2026 actuel ne distingue pas les ventes <strong>one shot</strong> (boitier Detoxio, cles Locknest, materiel) des <strong>abonnements souscrits</strong> dans le mois. Les chiffres "CA produit" issus du LA melent les deux. Mail envoye a Eva pour ajouter l'onglet "comptage" comme sur LA 2025 (cf. <em>mail-eva-onglet-comptage-LA2026.md</em>). Les tableaux ci-dessous sont neutralises tant que la ventilation n'est pas dispo.</span>
+            </div>
+
+            <div class="alert info" style="margin-top: 0.75rem;">
+                <span><strong>Decalage temporel structurel :</strong> les commandes revendeurs sont prelevees au cours du mois M ou M+1 selon les accords commerciaux ; les reglements fournisseurs Detoxio tombent le 10 de M+1. La marge mensuelle calendaire est donc volatile par nature — privilegier la lecture en <strong>cumul glissant 2-3 mois</strong>.</span>
+            </div>
+
+            <div class="data-table-container" style="opacity: 0.5;">
+                <div class="table-title">One shot marchandises - evolution mensuelle 2026 <span style="font-weight: 400; color: var(--text-muted); font-size: 0.8rem;">(neutralise - donnees melees avec abos en attente Eva)</span></div>
+                <table class="data-table">
+                    <thead>
+                        <tr>
+                            <th>Mois</th>
+                            <th>CA total (HT)</th>
+                            <th>Marge produit</th>
+                            <th>Taux de marge</th>
+                            <th>Cumul marge</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><strong>Janvier 2026</strong></td>
+                            <td class="cell-mono"><input type="text" class="editable-cell" value="33 164 EUR" data-key="oneshot-ca-jan"></td>
+                            <td class="cell-mono" style="color: var(--accent-red);"><input type="text" class="editable-cell" value="-17 176 EUR" data-key="oneshot-marge-jan"></td>
+                            <td class="cell-mono" style="color: var(--accent-red);">-52%</td>
+                            <td class="cell-mono">-17 176 EUR</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Fevrier 2026</strong></td>
+                            <td class="cell-mono"><input type="text" class="editable-cell" value="44 930 EUR" data-key="oneshot-ca-feb"></td>
+                            <td class="cell-mono"><input type="text" class="editable-cell" value="24 550 EUR" data-key="oneshot-marge-feb"></td>
+                            <td class="cell-mono">55%</td>
+                            <td class="cell-mono">7 374 EUR</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Mars 2026</strong></td>
+                            <td class="cell-mono"><input type="text" class="editable-cell" value="39 773 EUR" data-key="oneshot-ca-mar"></td>
+                            <td class="cell-mono"><input type="text" class="editable-cell" value="18 488 EUR" data-key="oneshot-marge-mar"></td>
+                            <td class="cell-mono">46%</td>
+                            <td class="cell-mono">25 862 EUR</td>
+                        </tr>
+                        <tr style="background: var(--mh-blue-dim);">
+                            <td><strong>Avril 2026</strong></td>
+                            <td class="cell-mono"><input type="text" class="editable-cell" value="26 053 EUR" data-key="oneshot-ca-apr"></td>
+                            <td class="cell-mono cell-highlight" style="color: var(--accent-yellow);"><input type="text" class="editable-cell" value="5 952 EUR" data-key="oneshot-marge-apr"></td>
+                            <td class="cell-mono">23%</td>
+                            <td class="cell-mono cell-highlight">31 814 EUR</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Mai 2026</strong> <span style="color: var(--text-muted); font-size: 0.75rem;">(en cours)</span></td>
+                            <td class="cell-mono"><input type="text" class="editable-cell" value="21 171 EUR" data-key="oneshot-ca-may"></td>
+                            <td class="cell-mono"><input type="text" class="editable-cell" value="21 171 EUR" data-key="oneshot-marge-may"></td>
+                            <td class="cell-mono">100%</td>
+                            <td class="cell-mono">52 984 EUR</td>
+                        </tr>
+                        <tr style="background: var(--bg-input);">
+                            <td><strong>Cumul T1 + avril</strong></td>
+                            <td class="cell-mono"><strong>143 919 EUR</strong></td>
+                            <td class="cell-mono cell-highlight"><strong>31 814 EUR</strong></td>
+                            <td class="cell-mono"><strong>22%</strong></td>
+                            <td class="cell-mono">-</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <div class="data-table-container" style="opacity: 0.5;">
+                <div class="table-title">One shot - repartition par fournisseur (avril 2026) <span style="font-weight: 400; color: var(--text-muted); font-size: 0.8rem;">(neutralise - inclut abos en attente Eva)</span></div>
+                <table class="data-table">
+                    <thead>
+                        <tr>
+                            <th>Fournisseur / Produit</th>
+                            <th>Ventes (commandes)</th>
+                            <th>CA HT</th>
+                            <th>Marge produit</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><strong>Serenicity</strong> <span style="color: var(--text-muted); font-size: 0.75rem;">(boitiers Detoxio)</span></td>
+                            <td class="cell-mono"><input type="text" class="editable-cell" value="-" data-key="os-detoxio-cmd"></td>
+                            <td class="cell-mono"><input type="text" class="editable-cell" value="11 897 EUR" data-key="os-serenicity-ca"></td>
+                            <td class="cell-mono"><input type="text" class="editable-cell" value="- EUR" data-key="os-serenicity-marge"></td>
+                        </tr>
+                        <tr>
+                            <td><strong>Sunbren</strong></td>
+                            <td class="cell-mono"><input type="text" class="editable-cell" value="-" data-key="os-sunbren-cmd"></td>
+                            <td class="cell-mono"><input type="text" class="editable-cell" value="5 093 EUR" data-key="os-sunbren-ca"></td>
+                            <td class="cell-mono"><input type="text" class="editable-cell" value="- EUR" data-key="os-sunbren-marge"></td>
+                        </tr>
+                        <tr>
+                            <td><strong>Scuba</strong></td>
+                            <td class="cell-mono"><input type="text" class="editable-cell" value="-" data-key="os-scuba-cmd"></td>
+                            <td class="cell-mono"><input type="text" class="editable-cell" value="323 EUR" data-key="os-scuba-ca"></td>
+                            <td class="cell-mono"><input type="text" class="editable-cell" value="- EUR" data-key="os-scuba-marge"></td>
+                        </tr>
+                        <tr>
+                            <td><strong>Locknest</strong> <span style="color: var(--text-muted); font-size: 0.75rem;">(cles)</span></td>
+                            <td class="cell-mono"><input type="text" class="editable-cell" value="-" data-key="os-locknest-cmd"></td>
+                            <td class="cell-mono"><input type="text" class="editable-cell" value="0 EUR" data-key="os-locknest-ca"></td>
+                            <td class="cell-mono"><input type="text" class="editable-cell" value="0 EUR" data-key="os-locknest-marge"></td>
+                        </tr>
+                        <tr>
+                            <td><strong>Sxipher</strong></td>
+                            <td class="cell-mono"><input type="text" class="editable-cell" value="-" data-key="os-sxipher-cmd"></td>
+                            <td class="cell-mono"><input type="text" class="editable-cell" value="1 000 EUR" data-key="os-sxipher-ca"></td>
+                            <td class="cell-mono"><input type="text" class="editable-cell" value="- EUR" data-key="os-sxipher-marge"></td>
+                        </tr>
+                        <tr>
+                            <td><strong>Secuserve</strong></td>
+                            <td class="cell-mono"><input type="text" class="editable-cell" value="-" data-key="os-secuserve-cmd"></td>
+                            <td class="cell-mono"><input type="text" class="editable-cell" value="1 788 EUR" data-key="os-secuserve-ca"></td>
+                            <td class="cell-mono"><input type="text" class="editable-cell" value="- EUR" data-key="os-secuserve-marge"></td>
+                        </tr>
+                        <tr style="background: var(--bg-input);">
+                            <td><strong>TOTAL avril 2026</strong></td>
+                            <td class="cell-mono">-</td>
+                            <td class="cell-mono"><strong>26 053 EUR</strong></td>
+                            <td class="cell-mono cell-highlight" style="color: var(--accent-yellow);"><strong>5 952 EUR</strong> <span style="font-size: 0.7rem; color: var(--text-muted);">(a verifier 14h30)</span></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <div class="data-table-container">
+                <div class="table-title">Prestations de services - evolution mensuelle 2026</div>
+                <table class="data-table">
+                    <thead>
+                        <tr>
+                            <th>Mois</th>
+                            <th>Matthias</th>
+                            <th>Marketing</th>
+                            <th>Formation</th>
+                            <th>Autres</th>
+                            <th>Total mois</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><strong>Janvier 2026</strong></td>
+                            <td class="cell-mono"><input type="text" class="editable-cell" value="- EUR" data-key="presta-matthias-jan"></td>
+                            <td class="cell-mono"><input type="text" class="editable-cell" value="- EUR" data-key="presta-mkg-jan"></td>
+                            <td class="cell-mono"><input type="text" class="editable-cell" value="- EUR" data-key="presta-form-jan"></td>
+                            <td class="cell-mono"><input type="text" class="editable-cell" value="- EUR" data-key="presta-autres-jan"></td>
+                            <td class="cell-mono"><input type="text" class="editable-cell" value="- EUR" data-key="presta-total-jan"></td>
+                        </tr>
+                        <tr>
+                            <td><strong>Fevrier 2026</strong></td>
+                            <td class="cell-mono"><input type="text" class="editable-cell" value="- EUR" data-key="presta-matthias-feb"></td>
+                            <td class="cell-mono"><input type="text" class="editable-cell" value="- EUR" data-key="presta-mkg-feb"></td>
+                            <td class="cell-mono"><input type="text" class="editable-cell" value="- EUR" data-key="presta-form-feb"></td>
+                            <td class="cell-mono"><input type="text" class="editable-cell" value="- EUR" data-key="presta-autres-feb"></td>
+                            <td class="cell-mono"><input type="text" class="editable-cell" value="- EUR" data-key="presta-total-feb"></td>
+                        </tr>
+                        <tr>
+                            <td><strong>Mars 2026</strong></td>
+                            <td class="cell-mono"><input type="text" class="editable-cell" value="- EUR" data-key="presta-matthias-mar"></td>
+                            <td class="cell-mono"><input type="text" class="editable-cell" value="- EUR" data-key="presta-mkg-mar"></td>
+                            <td class="cell-mono"><input type="text" class="editable-cell" value="- EUR" data-key="presta-form-mar"></td>
+                            <td class="cell-mono"><input type="text" class="editable-cell" value="- EUR" data-key="presta-autres-mar"></td>
+                            <td class="cell-mono"><input type="text" class="editable-cell" value="- EUR" data-key="presta-total-mar"></td>
+                        </tr>
+                        <tr style="background: var(--mh-blue-dim);">
+                            <td><strong>Avril 2026</strong></td>
+                            <td class="cell-mono"><input type="text" class="editable-cell" value="- EUR" data-key="presta-matthias-apr"></td>
+                            <td class="cell-mono"><input type="text" class="editable-cell" value="- EUR" data-key="presta-mkg-apr"></td>
+                            <td class="cell-mono"><input type="text" class="editable-cell" value="- EUR" data-key="presta-form-apr"></td>
+                            <td class="cell-mono"><input type="text" class="editable-cell" value="- EUR" data-key="presta-autres-apr"></td>
+                            <td class="cell-mono cell-highlight"><input type="text" class="editable-cell" value="- EUR" data-key="presta-total-apr"></td>
+                        </tr>
+                        <tr style="background: var(--bg-input);">
+                            <td><strong>Cumul T1 + avril</strong></td>
+                            <td class="cell-mono"><input type="text" class="editable-cell" value="- EUR" data-key="presta-matthias-cumul"></td>
+                            <td class="cell-mono"><input type="text" class="editable-cell" value="- EUR" data-key="presta-mkg-cumul"></td>
+                            <td class="cell-mono"><input type="text" class="editable-cell" value="- EUR" data-key="presta-form-cumul"></td>
+                            <td class="cell-mono"><input type="text" class="editable-cell" value="- EUR" data-key="presta-autres-cumul"></td>
+                            <td class="cell-mono cell-highlight"><strong><input type="text" class="editable-cell" value="- EUR" data-key="presta-total-cumul"></strong></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <div class="alert" style="background: var(--accent-yellow-dim); border: 1px solid var(--accent-yellow); color: var(--text-primary);">
+                <span><strong>A renseigner :</strong> historique 2026 des prestations (Matthias + marketing + formation). Reference 2025 : Matthias 1 070 EUR, marketing 5 775 EUR, formation 1 200 EUR (source : Comptage - LA 2025.xlsx feuille PRESTA).</span>
+            </div>
+        </div>
+
+        <!-- TAB: Commercial -->
+        <div class="tab-content" id="tab-commercial">
+            <div class="section-header">
+                <div>
+                    <h1 class="section-title">Performance Commerciale</h1>
+                    <p class="section-subtitle">Prise de commande &amp; reseau revendeurs - 2026</p>
+                </div>
+            </div>
+
+            <div class="alert" style="background: var(--accent-yellow-dim); border: 1px solid var(--accent-yellow); color: var(--text-primary);">
+                <span><strong>Transition equipe :</strong> Florian, Pierre-Fleury et Charlene en rupture conv. (fin 1er juin). Eva seule en interne juin-aout. Reprise commerciale septembre via Jean + ops croisees Breizh + retour potentiel Florian.</span>
+            </div>
+
+            <div class="data-table-container">
+                <div class="table-title">Prise de commande mensuelle 2026</div>
+                <table class="data-table">
+                    <thead>
+                        <tr>
+                            <th>Mois</th>
+                            <th>Prise de commande HT</th>
+                            <th>Marge produit</th>
+                            <th>Cumul</th>
+                            <th>Visualisation</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><strong>Janvier 2026</strong></td>
+                            <td class="cell-mono"><input type="text" class="editable-cell" value="33 164 EUR" data-key="pdc-jan"></td>
+                            <td class="cell-mono" style="color: var(--accent-red);">-17 176 EUR</td>
+                            <td class="cell-mono">33 164 EUR</td>
+                            <td><div style="background: var(--bg-input); border-radius: 4px; height: 18px;"><div style="background: var(--mh-blue); height: 100%; width: 72%; border-radius: 4px;"></div></div></td>
+                        </tr>
+                        <tr>
+                            <td><strong>Fevrier 2026</strong></td>
+                            <td class="cell-mono"><input type="text" class="editable-cell" value="44 930 EUR" data-key="pdc-feb"></td>
+                            <td class="cell-mono">24 550 EUR</td>
+                            <td class="cell-mono">78 094 EUR</td>
+                            <td><div style="background: var(--bg-input); border-radius: 4px; height: 18px;"><div style="background: var(--mh-blue); height: 100%; width: 98%; border-radius: 4px;"></div></div></td>
+                        </tr>
+                        <tr>
+                            <td><strong>Mars 2026</strong></td>
+                            <td class="cell-mono"><input type="text" class="editable-cell" value="39 773 EUR" data-key="pdc-mar"></td>
+                            <td class="cell-mono">18 488 EUR</td>
+                            <td class="cell-mono">117 866 EUR</td>
+                            <td><div style="background: var(--bg-input); border-radius: 4px; height: 18px;"><div style="background: var(--mh-blue); height: 100%; width: 87%; border-radius: 4px;"></div></div></td>
+                        </tr>
+                        <tr style="background: var(--mh-blue-dim);">
+                            <td><strong>Avril 2026</strong></td>
+                            <td class="cell-mono cell-highlight"><input type="text" class="editable-cell" value="26 053 EUR" data-key="pdc-apr"></td>
+                            <td class="cell-mono" style="color: var(--accent-yellow);">5 952 EUR <span style="font-size: 0.7rem; color: var(--text-muted);">(a verif)</span></td>
+                            <td class="cell-mono cell-highlight">143 919 EUR</td>
+                            <td><div style="background: var(--bg-input); border-radius: 4px; height: 18px;"><div style="background: var(--mh-blue); height: 100%; width: 57%; border-radius: 4px;"></div></div></td>
+                        </tr>
+                        <tr>
+                            <td><strong>Mai 2026</strong> <span style="color: var(--text-muted); font-size: 0.75rem;">(en cours)</span></td>
+                            <td class="cell-mono"><input type="text" class="editable-cell" value="21 171 EUR" data-key="pdc-may"></td>
+                            <td class="cell-mono">21 171 EUR</td>
+                            <td class="cell-mono">165 090 EUR</td>
+                            <td><div style="background: var(--bg-input); border-radius: 4px; height: 18px;"><div style="background: var(--mh-blue); height: 100%; width: 46%; border-radius: 4px;"></div></div></td>
+                        </tr>
+                        <tr style="background: var(--bg-input);">
+                            <td><strong>Cible mensuelle</strong></td>
+                            <td class="cell-mono"><strong>~45 800 EUR</strong></td>
+                            <td class="cell-mono"><strong>~17 600 EUR</strong></td>
+                            <td class="cell-mono"><strong>650 000 EUR/an</strong></td>
+                            <td class="cell-mono">CA 2026 cible : 650 KEUR</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <div class="data-table-container">
+                <div class="table-title">Reseau revendeurs</div>
+                <table class="data-table">
+                    <thead>
+                        <tr>
+                            <th>Indicateur</th>
+                            <th>Valeur 2026</th>
+                            <th>Cible</th>
+                            <th>Statut</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><strong>Revendeurs actifs</strong></td>
+                            <td class="cell-mono"><input type="text" class="editable-cell" value="66" data-key="revendeurs-actifs"></td>
+                            <td class="cell-mono">80</td>
+                            <td><span class="kpi-status yellow"><span class="status-dot"></span> 83%</span></td>
+                        </tr>
+                        <tr>
+                            <td><strong>Recrutements 2025-2026</strong></td>
+                            <td class="cell-mono"><input type="text" class="editable-cell" value="+19" data-key="recrutements"></td>
+                            <td class="cell-mono">+15/an</td>
+                            <td><span class="kpi-status green"><span class="status-dot"></span> Atteint</span></td>
+                        </tr>
+                        <tr>
+                            <td><strong>Boitiers Detoxio deployes</strong></td>
+                            <td class="cell-mono"><input type="text" class="editable-cell" value="925" data-key="boitiers-deployes"></td>
+                            <td class="cell-mono">1 200</td>
+                            <td><span class="kpi-status yellow"><span class="status-dot"></span> 77%</span></td>
+                        </tr>
+                        <tr>
+                            <td><strong>Abonnements Detoxio actifs</strong></td>
+                            <td class="cell-mono"><input type="text" class="editable-cell" value="427" data-key="abos-actifs"></td>
+                            <td class="cell-mono">650</td>
+                            <td><span class="kpi-status yellow"><span class="status-dot"></span> 66%</span></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <div class="data-table-container">
+                <div class="table-title">Equipe commerciale - etat &amp; trajectoire</div>
+                <table class="data-table">
+                    <thead>
+                        <tr>
+                            <th>Personne</th>
+                            <th>Statut</th>
+                            <th>Perimetre</th>
+                            <th>Echeance</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><strong>Florian</strong></td>
+                            <td><span class="kpi-status red"><span class="status-dot"></span> Rupture conv.</span></td>
+                            <td>Commercial terrain</td>
+                            <td class="cell-mono">Fin 1er juin 2026</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Pierre-Fleury</strong></td>
+                            <td><span class="kpi-status red"><span class="status-dot"></span> Rupture conv.</span></td>
+                            <td>Commercial terrain</td>
+                            <td class="cell-mono">Fin 1er juin 2026</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Charlene</strong></td>
+                            <td><span class="kpi-status red"><span class="status-dot"></span> Rupture conv.</span></td>
+                            <td>BU Services / mkg-com</td>
+                            <td class="cell-mono">Fin 1er juin 2026</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Eva</strong></td>
+                            <td><span class="kpi-status green"><span class="status-dot"></span> Active</span></td>
+                            <td>ADV / alternance</td>
+                            <td class="cell-mono">En poste</td>
+                        </tr>
+                        <tr style="background: var(--mh-blue-dim);">
+                            <td><strong>Jean</strong> <span style="color: var(--text-muted); font-size: 0.75rem;">(reprise)</span></td>
+                            <td><span class="kpi-status yellow"><span class="status-dot"></span> Prevu sept.</span></td>
+                            <td>CSO - commercial terrain</td>
+                            <td class="cell-mono">Septembre 2026</td>
+                        </tr>
+                        <tr style="background: var(--mh-blue-dim);">
+                            <td><strong>Cult</strong> <span style="color: var(--text-muted); font-size: 0.75rem;">(portage)</span></td>
+                            <td><span class="kpi-status green"><span class="status-dot"></span> Mai+</span></td>
+                            <td>Mkg / com (CCA mai-aout, facture sept+)</td>
+                            <td class="cell-mono">Mai 2026</td>
+                        </tr>
+                        <tr style="background: var(--mh-blue-dim);">
+                            <td><strong>Breizh Solutions</strong> <span style="color: var(--text-muted); font-size: 0.75rem;">(ops croisees)</span></td>
+                            <td><span class="kpi-status green"><span class="status-dot"></span> Active</span></td>
+                            <td>Cross-selling catalogue MH ↔ Breizh</td>
+                            <td class="cell-mono">En cours</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </main>
+
+    <footer class="footer">
+        <div class="save-indicator">
+            <span class="save-dot"></span>
+            <span>Modifications sauvegardees localement</span>
+        </div>
+        <div>
+            Marketime Hub - Pilotage 2026
+        </div>
+    </footer>
+    </div><!-- End app-content -->
+
+    <script>
+        // Hash SHA-256 du mot de passe (mdp en clair JAMAIS stocké dans le source)
+        // Pour changer le mdp : calculer le SHA-256 via `sha256sum` ou
+        // python -c "import hashlib; print(hashlib.sha256('NOUVEAU_MDP'.encode()).hexdigest())"
+        const PASSWORD_HASH = '66506a83ee759ed6d7554b35df3e75e605af6df8e19b6c1ff2733340f183abb9';
+        const AUTH_KEY = 'marketime-auth-2026';
+
+        // Check if already authenticated
+        function checkAuth() {
+            return sessionStorage.getItem(AUTH_KEY) === 'true';
+        }
+
+        // Hash a string via SubtleCrypto SHA-256
+        async function sha256(str) {
+            const buf = new TextEncoder().encode(str);
+            const hash = await crypto.subtle.digest('SHA-256', buf);
+            return Array.from(new Uint8Array(hash)).map(b => b.toString(16).padStart(2, '0')).join('');
+        }
+
+        // Login function (async pour hash)
+        async function checkPassword() {
+            const input = document.getElementById('passwordInput');
+            const error = document.getElementById('loginError');
+            const hashed = await sha256(input.value);
+
+            if (hashed === PASSWORD_HASH) {
+                sessionStorage.setItem(AUTH_KEY, 'true');
+                document.getElementById('loginScreen').style.display = 'none';
+                document.getElementById('appContent').classList.add('visible');
+                loadData();
+            } else {
+                input.classList.add('error');
+                error.classList.add('visible');
+                setTimeout(() => {
+                    input.classList.remove('error');
+                    error.classList.remove('visible');
+                }, 2000);
+                input.value = '';
+            }
+        }
+
+        // Initialize auth state on load
+        if (checkAuth()) {
+            document.getElementById('loginScreen').style.display = 'none';
+            document.getElementById('appContent').classList.add('visible');
+        }
+
+        // Tab navigation
+        document.querySelectorAll('.nav-tab').forEach(tab => {
+            tab.addEventListener('click', () => {
+                document.querySelectorAll('.nav-tab').forEach(t => t.classList.remove('active'));
+                document.querySelectorAll('.tab-content').forEach(c => c.classList.remove('active'));
+                tab.classList.add('active');
+                document.getElementById('tab-' + tab.dataset.tab).classList.add('active');
+            });
+        });
+
+        // Current date
+        const now = new Date();
+        const options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
+        document.getElementById('currentDate').textContent = now.toLocaleDateString('fr-FR', options);
+
+        // Local storage
+        const STORAGE_KEY = 'marketime-dashboard-2026-v6';
+
+        function saveData() {
+            const data = { values: {} };
+            document.querySelectorAll('[data-key]').forEach(el => {
+                data.values[el.dataset.key] = el.value;
+            });
+            localStorage.setItem(STORAGE_KEY, JSON.stringify(data));
+
+            const dot = document.querySelector('.save-dot');
+            if (dot) {
+                dot.classList.add('saving');
+                setTimeout(() => dot.classList.remove('saving'), 1000);
+            }
+        }
+
+        function loadData() {
+            const data = JSON.parse(localStorage.getItem(STORAGE_KEY) || '{}');
+            if (data.values) {
+                Object.entries(data.values).forEach(([key, value]) => {
+                    const el = document.querySelector(`[data-key="${key}"]`);
+                    if (el) el.value = value;
+                });
+            }
+        }
+
+        // Event listeners (saisie manuelle)
+        document.querySelectorAll('[data-key]').forEach(el => {
+            el.addEventListener('change', saveData);
+            el.addEventListener('blur', saveData);
+        });
+
+        // Initialize
+        loadData();
+    </script>
+</body>
+</html>
