@@ -958,6 +958,7 @@
         <button class="nav-tab" data-tab="mrr">MRR</button>
         <button class="nav-tab" data-tab="oneshot">One shot &amp; Prestations</button>
         <button class="nav-tab" data-tab="commercial">Commercial</button>
+        <button class="nav-tab" data-tab="treso">Trésorerie &amp; Flux</button>
     </nav>
 
     <main class="main-content">
@@ -990,20 +991,20 @@
                 </div>
 
                 <div class="kpi-card highlight">
-                    <div class="kpi-label">One shot marchandises (mois)</div>
+                    <div class="kpi-label">CA one shot matériel (mois)</div>
                     <input type="text" class="kpi-value editable" value="750 EUR" data-key="kpi-oneshot-mois">
                     <div class="kpi-meta">
-                        <span class="kpi-target">Cumul 2026 : 24 213 EUR</span>
+                        <span class="kpi-target">Cumul Janv-Mai : 24 863 EUR (Serenicity Boîtier)</span>
                         <span class="kpi-status yellow"><span class="status-dot"></span> Avril 2026 (mois faible)</span>
                     </div>
                 </div>
 
                 <div class="kpi-card highlight">
-                    <div class="kpi-label">Prestations de services (mois)</div>
+                    <div class="kpi-label">CA prestations services (mois)</div>
                     <input type="text" class="kpi-value editable" value="150 EUR" data-key="kpi-prestations-mois">
                     <div class="kpi-meta">
-                        <span class="kpi-target">Cumul 2026 : 300 EUR (+240 mai)</span>
-                        <span class="kpi-status yellow"><span class="status-dot"></span> Avril 2026 (Serenicity formation)</span>
+                        <span class="kpi-target">Cumul Janv-Mai : 540 EUR (Formation + MCYBER)</span>
+                        <span class="kpi-status yellow"><span class="status-dot"></span> Avril 2026 (Formation Serenicity)</span>
                     </div>
                 </div>
             </div>
@@ -1016,29 +1017,29 @@
 
             <div class="kpi-grid">
                 <div class="kpi-card">
-                    <div class="kpi-label">Solde banque (21/05)</div>
-                    <input type="text" class="kpi-value editable" value="12 507 EUR" data-key="tresorerie">
+                    <div class="kpi-label">Solde banque (29/05)</div>
+                    <input type="text" class="kpi-value editable" value="22 534 EUR" data-key="tresorerie">
                     <div class="kpi-meta">
-                        <span class="kpi-target">Projection 31/05 : 5 768 EUR</span>
-                        <span class="kpi-status yellow"><span class="status-dot"></span> CCA Jérôme en cours</span>
+                        <span class="kpi-target">Projection 31/05 : 20 903 EUR (post-CCA 40K)</span>
+                        <span class="kpi-status red"><span class="status-dot"></span> Alerte juillet : -24 557 EUR</span>
                     </div>
                 </div>
 
                 <div class="kpi-card">
-                    <div class="kpi-label">CA cumulé 2026 (avril)</div>
-                    <input type="text" class="kpi-value editable" value="143 919 EUR" data-key="ca-cumul">
+                    <div class="kpi-label">CA cumulé 2026 (mai)</div>
+                    <input type="text" class="kpi-value editable" value="172 242 EUR" data-key="ca-cumul">
                     <div class="kpi-meta">
                         <span class="kpi-target">Cible : 650 000 EUR</span>
-                        <span class="kpi-status yellow"><span class="status-dot"></span> 22%</span>
+                        <span class="kpi-status yellow"><span class="status-dot"></span> 26%</span>
                     </div>
                 </div>
 
                 <div class="kpi-card">
-                    <div class="kpi-label">Marge produit cumulée (avril)</div>
-                    <input type="text" class="kpi-value editable" value="31 814 EUR" data-key="marge-cumul">
+                    <div class="kpi-label">Marge produit cumulée (mai)</div>
+                    <input type="text" class="kpi-value editable" value="60 137 EUR" data-key="marge-cumul">
                     <div class="kpi-meta">
                         <span class="kpi-target">Cible : 250 000 EUR</span>
-                        <span class="kpi-status yellow"><span class="status-dot"></span> 13%</span>
+                        <span class="kpi-status yellow"><span class="status-dot"></span> 24%</span>
                     </div>
                 </div>
 
@@ -1491,6 +1492,78 @@
             <div class="alert info" style="margin-top: 0.75rem;">
                 <span><strong>Lecture :</strong> les prestations restent très marginales (540 EUR sur 5 mois = ~110 EUR/mois). Le one shot matériel est porté exclusivement par Serenicity (boîtiers Detoxio), avec une forte volatilité mensuelle (605 EUR en mars contre 17 660 EUR en février). Le mois février est exceptionnel, ne reflète pas de tendance.</span>
             </div>
+
+            <div class="section-header" style="margin-top: 1.5rem;">
+                <div>
+                    <h2 class="section-title" style="font-size: 1.1rem; color: var(--text-secondary);">Marge mensuelle rattachée (vision business)</h2>
+                </div>
+            </div>
+
+            <div class="alert" style="background: var(--mh-blue-dim); border: 1px solid var(--mh-blue); color: var(--text-primary);">
+                <span><strong>Lecture business vs lecture caisse :</strong> la marge mensuelle "caisse" (CA mois − achats du mois) est biaisée par les décalages de règlement (achats Detoxio payés en M+1 pour ventes du mois M). On affiche ici la <strong>marge rattachée</strong> : <em>CA mois M − achats payés en M+1</em> (= achats afférents aux ventes du mois). Approximation manuelle en attendant retraitement Eva (colonne dédiée dans LA 2026).</span>
+            </div>
+
+            <div class="data-table-container">
+                <div class="table-title">Marge rattachée mensuelle 2026 (HT) — approche business</div>
+                <table class="data-table">
+                    <thead>
+                        <tr>
+                            <th>Mois</th>
+                            <th>CA HT (mois M)</th>
+                            <th>Achats payés (M+1)</th>
+                            <th>Marge rattachée</th>
+                            <th>Taux</th>
+                            <th>Visualisation</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><strong>Janvier 2026</strong></td>
+                            <td class="cell-mono"><input type="text" class="editable-cell" value="33 164 EUR" data-key="mr-ca-jan"></td>
+                            <td class="cell-mono"><input type="text" class="editable-cell" value="20 380 EUR" data-key="mr-ach-jan"></td>
+                            <td class="cell-mono cell-highlight"><input type="text" class="editable-cell" value="12 784 EUR" data-key="mr-marge-jan"></td>
+                            <td class="cell-mono">39%</td>
+                            <td><div style="background: var(--bg-input); border-radius: 4px; height: 18px;"><div style="background: var(--mh-blue); height: 100%; width: 54%; border-radius: 4px;"></div></div></td>
+                        </tr>
+                        <tr>
+                            <td><strong>Février 2026</strong></td>
+                            <td class="cell-mono"><input type="text" class="editable-cell" value="44 930 EUR" data-key="mr-ca-feb"></td>
+                            <td class="cell-mono"><input type="text" class="editable-cell" value="21 285 EUR" data-key="mr-ach-feb"></td>
+                            <td class="cell-mono cell-highlight"><input type="text" class="editable-cell" value="23 645 EUR" data-key="mr-marge-feb"></td>
+                            <td class="cell-mono" style="color: var(--accent-green);">53%</td>
+                            <td><div style="background: var(--bg-input); border-radius: 4px; height: 18px;"><div style="background: var(--accent-green); height: 100%; width: 100%; border-radius: 4px;"></div></div></td>
+                        </tr>
+                        <tr>
+                            <td><strong>Mars 2026</strong></td>
+                            <td class="cell-mono"><input type="text" class="editable-cell" value="39 773 EUR" data-key="mr-ca-mar"></td>
+                            <td class="cell-mono"><input type="text" class="editable-cell" value="20 101 EUR" data-key="mr-ach-mar"></td>
+                            <td class="cell-mono cell-highlight"><input type="text" class="editable-cell" value="19 672 EUR" data-key="mr-marge-mar"></td>
+                            <td class="cell-mono" style="color: var(--accent-green);">49%</td>
+                            <td><div style="background: var(--bg-input); border-radius: 4px; height: 18px;"><div style="background: var(--mh-blue); height: 100%; width: 83%; border-radius: 4px;"></div></div></td>
+                        </tr>
+                        <tr style="background: var(--mh-blue-dim);">
+                            <td><strong>Avril 2026</strong></td>
+                            <td class="cell-mono"><input type="text" class="editable-cell" value="26 053 EUR" data-key="mr-ca-apr"></td>
+                            <td class="cell-mono" style="color: var(--text-muted);">~13 000 EUR <span style="font-size:0.7rem;">(estim.)</span></td>
+                            <td class="cell-mono cell-highlight"><input type="text" class="editable-cell" value="~13 000 EUR" data-key="mr-marge-apr"></td>
+                            <td class="cell-mono">~50%</td>
+                            <td><div style="background: var(--bg-input); border-radius: 4px; height: 18px;"><div style="background: var(--mh-blue); height: 100%; width: 55%; border-radius: 4px;"></div></div></td>
+                        </tr>
+                        <tr style="background: var(--bg-input);">
+                            <td><strong>Cumul Janv-Avril (consolidé)</strong></td>
+                            <td class="cell-mono"><strong>143 919 EUR</strong></td>
+                            <td class="cell-mono"><strong>~74 766 EUR</strong></td>
+                            <td class="cell-mono cell-highlight"><strong>~69 153 EUR</strong></td>
+                            <td class="cell-mono cell-highlight"><strong>48%</strong></td>
+                            <td class="cell-mono" style="color: var(--text-muted); font-size: 0.8rem;">vs 31 814 EUR en caisse (sous-estimé)</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <div class="alert info" style="margin-top: 0.75rem;">
+                <span><strong>Écart caisse vs rattachée :</strong> la lecture caisse donne 31 814 EUR de marge cumulée à fin avril (taux 22%), la lecture rattachée donne ~69 153 EUR (taux 48%). Soit <strong>~37 K€ de décalage</strong> dû au timing des règlements fournisseurs Detoxio. La lecture business stable autour de <strong>47-53%</strong> de taux de marge reflète la vraie performance économique.</span>
+            </div>
         </div>
 
         <!-- TAB: Commercial -->
@@ -1581,19 +1654,19 @@
                     <tbody>
                         <tr>
                             <td><strong>Detoxio</strong></td>
-                            <td class="cell-mono"><input type="text" class="editable-cell" value="32" data-key="cpt-detoxio-cmd"></td>
-                            <td class="cell-mono"><input type="text" class="editable-cell" value="23" data-key="cpt-detoxio-abo"></td>
-                            <td class="cell-mono"><input type="text" class="editable-cell" value="45" data-key="cpt-detoxio-fas"></td>
+                            <td class="cell-mono"><input type="text" class="editable-cell" value="36" data-key="cpt-detoxio-cmd"></td>
+                            <td class="cell-mono"><input type="text" class="editable-cell" value="24" data-key="cpt-detoxio-abo"></td>
+                            <td class="cell-mono"><input type="text" class="editable-cell" value="57" data-key="cpt-detoxio-fas"></td>
                             <td class="cell-mono" style="color: var(--accent-red);"><input type="text" class="editable-cell" value="33" data-key="cpt-detoxio-res"></td>
-                            <td class="cell-mono cell-highlight" style="color: var(--accent-red);">-10</td>
+                            <td class="cell-mono cell-highlight" style="color: var(--accent-red);">-9</td>
                         </tr>
                         <tr>
                             <td><strong>Secuserve</strong></td>
-                            <td class="cell-mono"><input type="text" class="editable-cell" value="30" data-key="cpt-secuserve-cmd"></td>
-                            <td class="cell-mono"><input type="text" class="editable-cell" value="30" data-key="cpt-secuserve-abo"></td>
+                            <td class="cell-mono"><input type="text" class="editable-cell" value="32" data-key="cpt-secuserve-cmd"></td>
+                            <td class="cell-mono"><input type="text" class="editable-cell" value="32" data-key="cpt-secuserve-abo"></td>
                             <td class="cell-mono">-</td>
                             <td class="cell-mono"><input type="text" class="editable-cell" value="0" data-key="cpt-secuserve-res"></td>
-                            <td class="cell-mono cell-highlight" style="color: var(--accent-green);">+30</td>
+                            <td class="cell-mono cell-highlight" style="color: var(--accent-green);">+32</td>
                         </tr>
                         <tr>
                             <td><strong>Sunbren</strong></td>
@@ -1605,9 +1678,9 @@
                         </tr>
                         <tr>
                             <td><strong>Formation Detoxio</strong> <span style="color: var(--text-muted); font-size: 0.75rem;">(CONTROL/DTX)</span></td>
-                            <td class="cell-mono"><input type="text" class="editable-cell" value="3" data-key="cpt-formation-cmd"></td>
+                            <td class="cell-mono"><input type="text" class="editable-cell" value="5" data-key="cpt-formation-cmd"></td>
                             <td class="cell-mono">-</td>
-                            <td class="cell-mono">3</td>
+                            <td class="cell-mono">5</td>
                             <td class="cell-mono">-</td>
                             <td class="cell-mono">-</td>
                         </tr>
@@ -1621,11 +1694,11 @@
                         </tr>
                         <tr style="background: var(--bg-input);">
                             <td><strong>TOTAL Janv-Mai 2026</strong></td>
-                            <td class="cell-mono"><strong>68</strong></td>
-                            <td class="cell-mono"><strong>53</strong></td>
-                            <td class="cell-mono"><strong>45</strong></td>
+                            <td class="cell-mono"><strong>74</strong></td>
+                            <td class="cell-mono"><strong>56</strong></td>
+                            <td class="cell-mono"><strong>57</strong></td>
                             <td class="cell-mono" style="color: var(--accent-red);"><strong>36</strong></td>
-                            <td class="cell-mono cell-highlight" style="color: var(--accent-green);"><strong>+17</strong></td>
+                            <td class="cell-mono cell-highlight" style="color: var(--accent-green);"><strong>+20</strong></td>
                         </tr>
                     </tbody>
                 </table>
@@ -1729,6 +1802,243 @@
                 </table>
             </div>
         </div>
+
+        <!-- TAB: Trésorerie & Flux -->
+        <div class="tab-content" id="tab-treso">
+            <div class="section-header">
+                <div>
+                    <h1 class="section-title">Trésorerie &amp; Flux</h1>
+                    <p class="section-subtitle">Pilotage cash et projection trajectoire — source : <em>treso jour.xlsx</em> (Eva, maj 29/05)</p>
+                </div>
+            </div>
+
+            <div class="kpi-grid">
+                <div class="kpi-card highlight">
+                    <div class="kpi-label">Solde banque aujourd'hui (29/05)</div>
+                    <input type="text" class="kpi-value editable" value="22 534 EUR" data-key="tr-solde-jour">
+                    <div class="kpi-meta">
+                        <span class="kpi-target">Post-apport CCA Jérôme 40K (mai)</span>
+                        <span class="kpi-status green"><span class="status-dot"></span> Confortable court terme</span>
+                    </div>
+                </div>
+
+                <div class="kpi-card highlight">
+                    <div class="kpi-label">Projection fin mai</div>
+                    <input type="text" class="kpi-value editable" value="20 903 EUR" data-key="tr-fin-mai">
+                    <div class="kpi-meta">
+                        <span class="kpi-target">SI mai : 1 312 EUR → +19 591 EUR</span>
+                        <span class="kpi-status green"><span class="status-dot"></span> Solde positif</span>
+                    </div>
+                </div>
+
+                <div class="kpi-card highlight">
+                    <div class="kpi-label">Point bas juin (30/06)</div>
+                    <input type="text" class="kpi-value editable" value="2 109 EUR" data-key="tr-pt-bas-juin">
+                    <div class="kpi-meta">
+                        <span class="kpi-target">Pic encaissements 10/06 : 25 253 EUR</span>
+                        <span class="kpi-status yellow"><span class="status-dot"></span> Tendu mais positif</span>
+                    </div>
+                </div>
+
+                <div class="kpi-card highlight" style="border-color: var(--accent-red);">
+                    <div class="kpi-label">⚠ Alerte fin juillet (31/07)</div>
+                    <input type="text" class="kpi-value editable" style="color: var(--accent-red);" value="-24 557 EUR" data-key="tr-alerte-juillet">
+                    <div class="kpi-meta">
+                        <span class="kpi-target">Sans nouvel apport / renforcement commercial</span>
+                        <span class="kpi-status red"><span class="status-dot"></span> Action requise avant juillet</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="data-table-container">
+                <div class="table-title">Trajectoire trésorerie 30 mai → 31 juillet 2026 (jalons clés)</div>
+                <table class="data-table">
+                    <thead>
+                        <tr>
+                            <th>Date</th>
+                            <th>Solde projeté</th>
+                            <th>Évènement</th>
+                            <th>Visualisation</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr style="background: var(--mh-blue-dim);">
+                            <td><strong>29/05/2026</strong> <span style="color: var(--text-muted); font-size: 0.75rem;">(aujourd'hui)</span></td>
+                            <td class="cell-mono cell-highlight">22 534 EUR</td>
+                            <td>Apport CCA 40K reçu, charges du mois passées</td>
+                            <td><div style="background: var(--bg-input); border-radius: 4px; height: 18px;"><div style="background: var(--accent-green); height: 100%; width: 90%; border-radius: 4px;"></div></div></td>
+                        </tr>
+                        <tr>
+                            <td>31/05/2026</td>
+                            <td class="cell-mono">20 903 EUR</td>
+                            <td>Fin de mois — charges fixes payées</td>
+                            <td><div style="background: var(--bg-input); border-radius: 4px; height: 18px;"><div style="background: var(--accent-green); height: 100%; width: 84%; border-radius: 4px;"></div></div></td>
+                        </tr>
+                        <tr>
+                            <td>05/06/2026</td>
+                            <td class="cell-mono">13 255 EUR</td>
+                            <td>Charges juin (Serenicity, salaires)</td>
+                            <td><div style="background: var(--bg-input); border-radius: 4px; height: 18px;"><div style="background: var(--mh-blue); height: 100%; width: 53%; border-radius: 4px;"></div></div></td>
+                        </tr>
+                        <tr style="background: var(--accent-green-dim);">
+                            <td>10/06/2026</td>
+                            <td class="cell-mono cell-highlight">25 253 EUR</td>
+                            <td>Pic encaissements clients (facture mai)</td>
+                            <td><div style="background: var(--bg-input); border-radius: 4px; height: 18px;"><div style="background: var(--accent-green); height: 100%; width: 100%; border-radius: 4px;"></div></div></td>
+                        </tr>
+                        <tr>
+                            <td>15/06/2026</td>
+                            <td class="cell-mono">16 553 EUR</td>
+                            <td>Charges mi-mois</td>
+                            <td><div style="background: var(--bg-input); border-radius: 4px; height: 18px;"><div style="background: var(--mh-blue); height: 100%; width: 66%; border-radius: 4px;"></div></div></td>
+                        </tr>
+                        <tr>
+                            <td>30/06/2026</td>
+                            <td class="cell-mono" style="color: var(--accent-yellow);">2 109 EUR</td>
+                            <td>Ruptures conv. PF + Charlène (1er juin) impactent</td>
+                            <td><div style="background: var(--bg-input); border-radius: 4px; height: 18px;"><div style="background: var(--accent-yellow); height: 100%; width: 8%; border-radius: 4px;"></div></div></td>
+                        </tr>
+                        <tr>
+                            <td>05/07/2026</td>
+                            <td class="cell-mono" style="color: var(--accent-red);">-477 EUR</td>
+                            <td>Passage en négatif</td>
+                            <td><div style="background: var(--bg-input); border-radius: 4px; height: 18px;"><div style="background: var(--accent-red); height: 100%; width: 2%; border-radius: 4px;"></div></div></td>
+                        </tr>
+                        <tr>
+                            <td>10/07/2026</td>
+                            <td class="cell-mono">5 056 EUR</td>
+                            <td>Encaissements clients juin</td>
+                            <td><div style="background: var(--bg-input); border-radius: 4px; height: 18px;"><div style="background: var(--mh-blue); height: 100%; width: 20%; border-radius: 4px;"></div></div></td>
+                        </tr>
+                        <tr>
+                            <td>24/07/2026</td>
+                            <td class="cell-mono" style="color: var(--accent-red);">-17 579 EUR</td>
+                            <td>Charges juillet (sans encaissement compensatoire)</td>
+                            <td><div style="background: var(--bg-input); border-radius: 4px; height: 18px;"><div style="background: var(--accent-red); height: 100%; width: 5%; border-radius: 4px;"></div></div></td>
+                        </tr>
+                        <tr style="background: rgba(239, 68, 68, 0.1); border-color: var(--accent-red);">
+                            <td><strong>31/07/2026</strong></td>
+                            <td class="cell-mono cell-highlight" style="color: var(--accent-red);"><strong>-24 557 EUR</strong></td>
+                            <td><strong>⚠ Alerte structurelle</strong></td>
+                            <td><div style="background: var(--bg-input); border-radius: 4px; height: 18px;"><div style="background: var(--accent-red); height: 100%; width: 8%; border-radius: 4px;"></div></div></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <div class="data-table-container">
+                <div class="table-title">Synthèse flux mai 2026 (encaissements vs décaissements)</div>
+                <table class="data-table">
+                    <thead>
+                        <tr>
+                            <th>Poste</th>
+                            <th>Montant</th>
+                            <th>Commentaire</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><strong>Solde début mai</strong></td>
+                            <td class="cell-mono">1 312 EUR</td>
+                            <td style="color: var(--text-muted); font-size: 0.85rem;">Solde de départ tendu</td>
+                        </tr>
+                        <tr style="background: var(--accent-green-dim);">
+                            <td><strong>+ Encaissements clients</strong></td>
+                            <td class="cell-mono" style="color: var(--accent-green);">+37 756 EUR</td>
+                            <td style="color: var(--text-muted); font-size: 0.85rem;">Factures clients récurrentes + spot</td>
+                        </tr>
+                        <tr style="background: var(--accent-green-dim);">
+                            <td><strong>+ Apport CCA Jérôme</strong></td>
+                            <td class="cell-mono" style="color: var(--accent-green);">+40 000 EUR</td>
+                            <td style="color: var(--text-muted); font-size: 0.85rem;">3ème tranche (cumul 74K depuis mars : 24+10+40)</td>
+                        </tr>
+                        <tr>
+                            <td><strong>= Total entrées</strong></td>
+                            <td class="cell-mono cell-highlight">77 756 EUR</td>
+                            <td>-</td>
+                        </tr>
+                        <tr style="background: var(--accent-red-dim);">
+                            <td><strong>− Charges exploitation</strong></td>
+                            <td class="cell-mono" style="color: var(--accent-red);">-31 107 EUR</td>
+                            <td style="color: var(--text-muted); font-size: 0.85rem;">Serenicity 21 655 + Sunbren 5 719 + Secuserve 2 145 + Sxipher 1 200 + Cybi 388</td>
+                        </tr>
+                        <tr style="background: var(--accent-red-dim);">
+                            <td><strong>− Charges fixes structure</strong></td>
+                            <td class="cell-mono" style="color: var(--accent-red);">-13 570 EUR</td>
+                            <td style="color: var(--text-muted); font-size: 0.85rem;">vs cible 12 894 (écart +676 lié à compta annuelle)</td>
+                        </tr>
+                        <tr style="background: var(--accent-red-dim);">
+                            <td><strong>− Charges variables</strong></td>
+                            <td class="cell-mono" style="color: var(--accent-red);">-13 400 EUR</td>
+                            <td style="color: var(--text-muted); font-size: 0.85rem;">Dont impôt/TVA 13 000 EUR</td>
+                        </tr>
+                        <tr style="background: var(--accent-red-dim);">
+                            <td><strong>− Charges financières</strong></td>
+                            <td class="cell-mono" style="color: var(--accent-red);">-86 EUR</td>
+                            <td style="color: var(--text-muted); font-size: 0.85rem;">Frais bancaires</td>
+                        </tr>
+                        <tr>
+                            <td><strong>= Total sorties</strong></td>
+                            <td class="cell-mono cell-highlight">-58 165 EUR</td>
+                            <td>-</td>
+                        </tr>
+                        <tr style="background: var(--bg-input);">
+                            <td><strong>= Solde fin mai (projeté)</strong></td>
+                            <td class="cell-mono cell-highlight" style="color: var(--accent-green);"><strong>20 903 EUR</strong></td>
+                            <td><strong>+19 591 EUR net sur le mois</strong></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <div class="data-table-container">
+                <div class="table-title">Apports CCA Jérôme — cumul 2026</div>
+                <table class="data-table">
+                    <thead>
+                        <tr>
+                            <th>Date</th>
+                            <th>Montant</th>
+                            <th>Cumul</th>
+                            <th>Statut</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Mars 2026</td>
+                            <td class="cell-mono">24 000 EUR</td>
+                            <td class="cell-mono">24 000 EUR</td>
+                            <td><span class="kpi-status green"><span class="status-dot"></span> Reçu</span></td>
+                        </tr>
+                        <tr>
+                            <td>Avril 2026</td>
+                            <td class="cell-mono">10 000 EUR</td>
+                            <td class="cell-mono">34 000 EUR</td>
+                            <td><span class="kpi-status green"><span class="status-dot"></span> Reçu</span></td>
+                        </tr>
+                        <tr style="background: var(--mh-blue-dim);">
+                            <td><strong>Mai 2026</strong></td>
+                            <td class="cell-mono cell-highlight">40 000 EUR</td>
+                            <td class="cell-mono cell-highlight">74 000 EUR</td>
+                            <td><span class="kpi-status green"><span class="status-dot"></span> Reçu (29/05)</span></td>
+                        </tr>
+                        <tr style="background: var(--bg-input);">
+                            <td><strong>TOTAL CCA reçus</strong></td>
+                            <td class="cell-mono">-</td>
+                            <td class="cell-mono cell-highlight"><strong>74 000 EUR</strong></td>
+                            <td style="color: var(--text-muted); font-size: 0.8rem;">Initialement 60K demandés (note avril), élargi à 74K</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <div class="alert" style="background: var(--accent-red-dim); border: 1px solid var(--accent-red); color: var(--text-primary);">
+                <span><strong>⚠ Plan d'action requis avant fin juillet :</strong> sans renforcement commercial ou nouvel apport, la trésorerie plonge à -24 557 EUR au 31/07. Pistes : (1) accélération encaissements clients (factor / acompte), (2) réduction charges variables juillet, (3) tranche CCA Jérôme additionnelle, (4) reprise commerciale anticipée (Jean / Florian sur le terrain dès juillet vs septembre). À cadrer en comité Jérôme.</span>
+            </div>
+
+            <div class="alert info" style="margin-top: 0.75rem;">
+                <span><strong>Note méthodologique :</strong> les soldes ci-dessus sont issus du <em>treso jour.xlsx</em> mis à jour quotidiennement par Eva. Ce sont des projections basées sur les flux connus (échéances facturées, charges récurrentes). Les flux inattendus (impayés clients, dépenses exceptionnelles) ne sont pas inclus. Pour la stratégie long terme et le détail du raisonnement, voir <em>projection-treso-MH.html</em>.</span>
+            </div>
+        </div>
     </main>
 
     <footer class="footer">
@@ -1805,7 +2115,7 @@
         document.getElementById('currentDate').textContent = now.toLocaleDateString('fr-FR', options);
 
         // Local storage
-        const STORAGE_KEY = 'marketime-dashboard-2026-v7';
+        const STORAGE_KEY = 'marketime-dashboard-2026-v8';
 
         function saveData() {
             const data = { values: {} };
