@@ -1021,7 +1021,7 @@
                     <input type="text" class="kpi-value editable" value="22 534 EUR" data-key="tresorerie">
                     <div class="kpi-meta">
                         <span class="kpi-target">Projection 31/05 : 20 903 EUR (post-CCA 40K)</span>
-                        <span class="kpi-status red"><span class="status-dot"></span> Alerte juillet : -24 557 EUR</span>
+                        <span class="kpi-status yellow"><span class="status-dot"></span> Proj. 31/07 ajustée : ~7 000 EUR</span>
                     </div>
                 </div>
 
@@ -1856,8 +1856,8 @@
                     <thead>
                         <tr>
                             <th>Date</th>
-                            <th>Brut (flux engagés)</th>
-                            <th>Ajusté (avec hypothèses)</th>
+                            <th>Brut (flux engagés, hors ventes supp)</th>
+                            <th>Ajusté (avec hypothèse de ventes)</th>
                             <th>Évènement</th>
                         </tr>
                     </thead>
@@ -2126,7 +2126,7 @@
         document.getElementById('currentDate').textContent = now.toLocaleDateString('fr-FR', options);
 
         // Local storage
-        const STORAGE_KEY = 'marketime-dashboard-2026-v10';
+        const STORAGE_KEY = 'marketime-dashboard-2026-v11';
 
         function saveData() {
             const data = { values: {} };
