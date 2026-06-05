@@ -976,8 +976,8 @@
                     <div class="kpi-label">Marge récurrente mensuelle</div>
                     <input type="text" class="kpi-value editable" value="8 071 EUR" data-key="kpi-marge-recurrente">
                     <div class="kpi-meta">
-                        <span class="kpi-target">Couverture charges structure : 12 894 EUR</span>
-                        <span class="kpi-status yellow"><span class="status-dot"></span> 63%</span>
+                        <span class="kpi-target">Couverture charges structure : 11 144 EUR</span>
+                        <span class="kpi-status green"><span class="status-dot"></span> 72%</span>
                     </div>
                 </div>
 
@@ -1055,25 +1055,25 @@
 
             <div class="progress-section">
                 <div class="progress-header">
-                    <div class="progress-title">Couverture charges structure MH v2 (avec Florian + Cult portage CCA)</div>
+                    <div class="progress-title">Couverture charges structure MH v2 (Cult exclu, CCA)</div>
                     <div class="progress-values">
                         <span class="progress-current">8 071 EUR</span>
-                        <span class="progress-target"> / 12 894 EUR (charges fixes structure)</span>
+                        <span class="progress-target"> / 11 144 EUR (charges fixes flux — hors Cult CCA)</span>
                     </div>
                 </div>
                 <div class="progress-bar-container">
-                    <div class="progress-bar" style="width: 63%; background: linear-gradient(135deg, var(--accent-yellow) 0%, #d97706 100%);"></div>
+                    <div class="progress-bar" style="width: 72%; background: linear-gradient(135deg, var(--accent-green) 0%, #059669 100%);"></div>
                 </div>
                 <div class="progress-milestones">
                     <span>0 EUR</span>
-                    <span>3K</span>
-                    <span>6,5K</span>
-                    <span>9,5K</span>
-                    <span>13K (break-even)</span>
+                    <span>2,8K</span>
+                    <span>5,5K</span>
+                    <span>8,3K</span>
+                    <span>11,1K (break-even)</span>
                 </div>
-                <div style="margin-top: 0.75rem; padding: 0.75rem; background: var(--accent-yellow-dim); border-radius: var(--radius-sm); font-size: 0.85rem; color: var(--text-secondary);">
-                    <strong style="color: var(--accent-yellow);">Break-even MRR à 63% — couverture flux tréso à compléter par le one shot et les prestas.</strong>
-                    Hypothèses : Florian reste (+3 357 EUR/mois coût employeur + 100 EUR TR), Cult mkg en portage CCA jusqu'à août (1 750 EUR), Eva en alternance, AG2R réduit. En flux pur (sans Cult) : 11 144 EUR cible, 72% couvert. Source : <em>projection-treso-MH.html</em>.
+                <div style="margin-top: 0.75rem; padding: 0.75rem; background: var(--accent-green-dim); border-radius: var(--radius-sm); font-size: 0.85rem; color: var(--text-secondary);">
+                    <strong style="color: var(--accent-green);">Break-even MRR à 72% — couverture flux tréso à compléter par le one shot et les prestas.</strong>
+                    Cible flux pur (11 144 EUR) : Eva alternance, Florian (+3 357 EUR coût employeur + 100 EUR TR), AG2R réduit, charges fixes structure. <strong>Cult mkg/com exclu</strong> (1 750 EUR/mois en CCA, potentiellement non facturé en 2026 ou facturé en globalité fin d'année — levier de pilotage tréso). Source : <em>projection-treso-MH.html</em>.
                 </div>
             </div>
         </div>
@@ -1100,8 +1100,8 @@
                 </div>
                 <div class="mrr-item">
                     <div class="mrr-item-label">Cible structure MH v2</div>
-                    <input type="text" class="kpi-value editable" style="font-size: 1.15rem;" value="12 894 EUR" data-key="mrr-cible">
-                    <div class="mrr-item-change">63% (avec Florian + Cult portage)</div>
+                    <input type="text" class="kpi-value editable" style="font-size: 1.15rem;" value="11 144 EUR" data-key="mrr-cible">
+                    <div class="mrr-item-change">72% (cible flux, Cult exclu)</div>
                 </div>
                 <div class="mrr-item">
                     <div class="mrr-item-label">Variation vs mois precedent</div>
@@ -1971,7 +1971,7 @@
                         <tr style="background: var(--accent-red-dim);">
                             <td><strong>− Charges fixes structure</strong></td>
                             <td class="cell-mono" style="color: var(--accent-red);">-13 570 EUR</td>
-                            <td style="color: var(--text-muted); font-size: 0.85rem;">vs cible 12 894 (écart +676 lié à compta annuelle)</td>
+                            <td style="color: var(--text-muted); font-size: 0.85rem;">vs cible 11 144 (Cult exclu, CCA) — écart lié à compta annuelle lissée + ajustements ponctuels</td>
                         </tr>
                         <tr style="background: var(--accent-red-dim);">
                             <td><strong>− Charges variables</strong></td>
@@ -2126,7 +2126,7 @@
         document.getElementById('currentDate').textContent = now.toLocaleDateString('fr-FR', options);
 
         // Local storage
-        const STORAGE_KEY = 'marketime-dashboard-2026-v9';
+        const STORAGE_KEY = 'marketime-dashboard-2026-v10';
 
         function saveData() {
             const data = { values: {} };
