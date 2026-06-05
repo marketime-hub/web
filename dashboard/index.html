@@ -1840,12 +1840,12 @@
                     </div>
                 </div>
 
-                <div class="kpi-card highlight" style="border-color: var(--accent-red);">
-                    <div class="kpi-label">⚠ Alerte fin juillet (31/07)</div>
-                    <input type="text" class="kpi-value editable" style="color: var(--accent-red);" value="-24 557 EUR" data-key="tr-alerte-juillet">
+                <div class="kpi-card highlight">
+                    <div class="kpi-label">Projection 31/07 (ajustée)</div>
+                    <input type="text" class="kpi-value editable" value="~7 000 EUR" data-key="tr-projection-juillet-ajustee">
                     <div class="kpi-meta">
-                        <span class="kpi-target">Sans nouvel apport / renforcement commercial</span>
-                        <span class="kpi-status red"><span class="status-dot"></span> Action requise avant juillet</span>
+                        <span class="kpi-target">Brut treso jour : -24 557 EUR (flux engagés uniquement)</span>
+                        <span class="kpi-status yellow"><span class="status-dot"></span> Vigilance, à recalibrer fin juin</span>
                     </div>
                 </div>
             </div>
@@ -1856,71 +1856,77 @@
                     <thead>
                         <tr>
                             <th>Date</th>
-                            <th>Solde projeté</th>
+                            <th>Brut (flux engagés)</th>
+                            <th>Ajusté (avec hypothèses)</th>
                             <th>Évènement</th>
-                            <th>Visualisation</th>
                         </tr>
                     </thead>
                     <tbody>
                         <tr style="background: var(--mh-blue-dim);">
                             <td><strong>29/05/2026</strong> <span style="color: var(--text-muted); font-size: 0.75rem;">(aujourd'hui)</span></td>
                             <td class="cell-mono cell-highlight">22 534 EUR</td>
+                            <td class="cell-mono" style="color: var(--text-muted);">= brut</td>
                             <td>Apport CCA 40K reçu, charges du mois passées</td>
-                            <td><div style="background: var(--bg-input); border-radius: 4px; height: 18px;"><div style="background: var(--accent-green); height: 100%; width: 90%; border-radius: 4px;"></div></div></td>
                         </tr>
                         <tr>
                             <td>31/05/2026</td>
                             <td class="cell-mono">20 903 EUR</td>
+                            <td class="cell-mono" style="color: var(--text-muted);">= brut</td>
                             <td>Fin de mois — charges fixes payées</td>
-                            <td><div style="background: var(--bg-input); border-radius: 4px; height: 18px;"><div style="background: var(--accent-green); height: 100%; width: 84%; border-radius: 4px;"></div></div></td>
                         </tr>
                         <tr>
                             <td>05/06/2026</td>
                             <td class="cell-mono">13 255 EUR</td>
+                            <td class="cell-mono" style="color: var(--text-muted);">= brut</td>
                             <td>Charges juin (Serenicity, salaires)</td>
-                            <td><div style="background: var(--bg-input); border-radius: 4px; height: 18px;"><div style="background: var(--mh-blue); height: 100%; width: 53%; border-radius: 4px;"></div></div></td>
                         </tr>
                         <tr style="background: var(--accent-green-dim);">
                             <td>10/06/2026</td>
                             <td class="cell-mono cell-highlight">25 253 EUR</td>
+                            <td class="cell-mono" style="color: var(--text-muted);">= brut</td>
                             <td>Pic encaissements clients (facture mai)</td>
-                            <td><div style="background: var(--bg-input); border-radius: 4px; height: 18px;"><div style="background: var(--accent-green); height: 100%; width: 100%; border-radius: 4px;"></div></div></td>
                         </tr>
                         <tr>
                             <td>15/06/2026</td>
                             <td class="cell-mono">16 553 EUR</td>
+                            <td class="cell-mono" style="color: var(--text-muted);">= brut</td>
                             <td>Charges mi-mois</td>
-                            <td><div style="background: var(--bg-input); border-radius: 4px; height: 18px;"><div style="background: var(--mh-blue); height: 100%; width: 66%; border-radius: 4px;"></div></div></td>
                         </tr>
                         <tr>
                             <td>30/06/2026</td>
                             <td class="cell-mono" style="color: var(--accent-yellow);">2 109 EUR</td>
-                            <td>Ruptures conv. PF + Charlène (1er juin) impactent</td>
-                            <td><div style="background: var(--bg-input); border-radius: 4px; height: 18px;"><div style="background: var(--accent-yellow); height: 100%; width: 8%; border-radius: 4px;"></div></div></td>
+                            <td class="cell-mono" style="color: var(--text-muted);">= brut</td>
+                            <td>Fin de mois — ventes juin non encore facturées</td>
                         </tr>
                         <tr>
                             <td>05/07/2026</td>
                             <td class="cell-mono" style="color: var(--accent-red);">-477 EUR</td>
-                            <td>Passage en négatif</td>
-                            <td><div style="background: var(--bg-input); border-radius: 4px; height: 18px;"><div style="background: var(--accent-red); height: 100%; width: 2%; border-radius: 4px;"></div></div></td>
+                            <td class="cell-mono" style="color: var(--text-muted);">~ -477 EUR</td>
+                            <td>Charges début juillet</td>
+                        </tr>
+                        <tr style="background: var(--mh-blue-dim);">
+                            <td><strong>10/07/2026</strong></td>
+                            <td class="cell-mono">5 056 EUR <span style="font-size: 0.7rem; color: var(--text-muted);">(brut)</span></td>
+                            <td class="cell-mono cell-highlight" style="color: var(--accent-green);">~37 000 EUR</td>
+                            <td>Encaissements ventes juin (hypothèse 38K€ moyenne)</td>
                         </tr>
                         <tr>
-                            <td>10/07/2026</td>
-                            <td class="cell-mono">5 056 EUR</td>
-                            <td>Encaissements clients juin</td>
-                            <td><div style="background: var(--bg-input); border-radius: 4px; height: 18px;"><div style="background: var(--mh-blue); height: 100%; width: 20%; border-radius: 4px;"></div></div></td>
+                            <td>15/07/2026</td>
+                            <td class="cell-mono" style="color: var(--accent-red);">-2 365 EUR</td>
+                            <td class="cell-mono" style="color: var(--accent-green);">~29 700 EUR</td>
+                            <td>Charges mi-juillet</td>
                         </tr>
                         <tr>
                             <td>24/07/2026</td>
                             <td class="cell-mono" style="color: var(--accent-red);">-17 579 EUR</td>
-                            <td>Charges juillet (sans encaissement compensatoire)</td>
-                            <td><div style="background: var(--bg-input); border-radius: 4px; height: 18px;"><div style="background: var(--accent-red); height: 100%; width: 5%; border-radius: 4px;"></div></div></td>
+                            <td class="cell-mono" style="color: var(--accent-yellow);">~14 500 EUR</td>
+                            <td>Charges fin juillet (Detoxio achats juin)</td>
                         </tr>
-                        <tr style="background: rgba(239, 68, 68, 0.1); border-color: var(--accent-red);">
+                        <tr style="background: var(--bg-input);">
                             <td><strong>31/07/2026</strong></td>
-                            <td class="cell-mono cell-highlight" style="color: var(--accent-red);"><strong>-24 557 EUR</strong></td>
-                            <td><strong>⚠ Alerte structurelle</strong></td>
-                            <td><div style="background: var(--bg-input); border-radius: 4px; height: 18px;"><div style="background: var(--accent-red); height: 100%; width: 8%; border-radius: 4px;"></div></div></td>
+                            <td class="cell-mono" style="color: var(--accent-red);"><strong>-24 557 EUR</strong></td>
+                            <td class="cell-mono cell-highlight" style="color: var(--accent-yellow);"><strong>~7 000 EUR</strong></td>
+                            <td>Vigilance, à recalibrer avec ventes juin réelles</td>
                         </tr>
                     </tbody>
                 </table>
@@ -2031,12 +2037,17 @@
                 </table>
             </div>
 
-            <div class="alert" style="background: var(--accent-red-dim); border: 1px solid var(--accent-red); color: var(--text-primary);">
-                <span><strong>⚠ Plan d'action requis avant fin juillet :</strong> sans renforcement commercial ou nouvel apport, la trésorerie plonge à -24 557 EUR au 31/07. Pistes : (1) accélération encaissements clients (factor / acompte), (2) réduction charges variables juillet, (3) tranche CCA Jérôme additionnelle, (4) reprise commerciale anticipée (Jean / Florian sur le terrain dès juillet vs septembre). À cadrer en comité Jérôme.</span>
+            <div class="alert info">
+                <span><strong>Méthodologie projection brute vs ajustée.</strong> Deux lectures coexistent :</span>
+                <ul style="margin: 0.5rem 0 0 1.5rem; padding: 0; font-size: 0.9rem;">
+                    <li><strong>Brute</strong> (= treso jour Eva) : ne projette que les flux <em>déjà engagés</em> (factures émises, charges récurrentes connues). Ne tient pas compte des ventes M non encore facturées.</li>
+                    <li><strong>Ajustée</strong> : intègre une hypothèse d'encaissement basée sur la moyenne historique 2026 (~38 K€/mois, ventes facturées vers le 10 du mois suivant).</li>
+                </ul>
+                <span style="display: block; margin-top: 0.5rem;">Plus on avance dans le mois M, plus la projection brute se rapproche de l'ajustée (les flux deviennent engagés). À recalibrer en fin de mois M-1 avec les ventes réellement enregistrées.</span>
             </div>
 
             <div class="alert info" style="margin-top: 0.75rem;">
-                <span><strong>Note méthodologique :</strong> les soldes ci-dessus sont issus du <em>treso jour.xlsx</em> mis à jour quotidiennement par Eva. Ce sont des projections basées sur les flux connus (échéances facturées, charges récurrentes). Les flux inattendus (impayés clients, dépenses exceptionnelles) ne sont pas inclus. Pour la stratégie long terme et le détail du raisonnement, voir <em>projection-treso-MH.html</em>.</span>
+                <span><strong>Limites de l'hypothèse 38 K€ d'encaissement moyen :</strong> moyenne brute des 5 premiers mois 2026 (33+45+40+26+28 K€). Très volatile selon la part one shot du mois. À recalibrer dès que les ventes du mois précédent sont consolidées (vers le 5 du mois suivant). Pour la stratégie long terme, voir <em>projection-treso-MH.html</em>.</span>
             </div>
         </div>
     </main>
@@ -2115,7 +2126,7 @@
         document.getElementById('currentDate').textContent = now.toLocaleDateString('fr-FR', options);
 
         // Local storage
-        const STORAGE_KEY = 'marketime-dashboard-2026-v8';
+        const STORAGE_KEY = 'marketime-dashboard-2026-v9';
 
         function saveData() {
             const data = { values: {} };
