@@ -1018,10 +1018,10 @@
             <div class="kpi-grid">
                 <div class="kpi-card">
                     <div class="kpi-label">Solde banque (08/07)</div>
-                    <input type="text" class="kpi-value editable" value="5 691 EUR" data-key="tresorerie">
+                    <input type="text" class="kpi-value editable" value="7 728 EUR" data-key="tresorerie">
                     <div class="kpi-meta">
-                        <span class="kpi-target">Pic 10/07 attendu : 33 751 EUR (encaissements juin)</span>
-                        <span class="kpi-status yellow"><span class="status-dot"></span> Proj. 31/07 brute : 4 412 EUR — alerte fin août</span>
+                        <span class="kpi-target">Réel app CE (projection Eva : 5 691 EUR)</span>
+                        <span class="kpi-status yellow"><span class="status-dot"></span> Proj. 31/07 : +4 412 EUR — alerte 31/08</span>
                     </div>
                 </div>
 
@@ -1390,7 +1390,7 @@
                             <td><div style="background: var(--bg-input); border-radius: 4px; height: 18px;"><div style="background: var(--accent-green); height: 100%; width: 100%; border-radius: 4px;"></div></div></td>
                         </tr>
                         <tr>
-                            <td><strong>Juillet 2026</strong> <span style="color: var(--text-muted); font-size: 0.75rem;">(en cours)</span></td>
+                            <td><strong>Juillet 2026</strong> <span style="color: var(--text-muted); font-size: 0.75rem;">(en cours — 1 sem/4)</span></td>
                             <td class="cell-mono"><input type="text" class="editable-cell" value="99 EUR" data-key="os-mat-jul"></td>
                             <td class="cell-mono"><input type="text" class="editable-cell" value="0 EUR" data-key="os-presta-jul"></td>
                             <td class="cell-mono">99 EUR</td>
@@ -1698,7 +1698,7 @@
                             <td><div style="background: var(--bg-input); border-radius: 4px; height: 18px;"><div style="background: var(--accent-green); height: 100%; width: 100%; border-radius: 4px;"></div></div></td>
                         </tr>
                         <tr>
-                            <td><strong>Juillet 2026</strong> <span style="color: var(--text-muted); font-size: 0.75rem;">(en cours)</span></td>
+                            <td><strong>Juillet 2026</strong> <span style="color: var(--text-muted); font-size: 0.75rem;">(en cours — 1 sem/4)</span></td>
                             <td class="cell-mono"><input type="text" class="editable-cell" value="27 555 EUR" data-key="pdc-jul"></td>
                             <td class="cell-mono">5 469 EUR</td>
                             <td class="cell-mono">251 338 EUR</td>
@@ -1892,10 +1892,10 @@
             <div class="kpi-grid">
                 <div class="kpi-card highlight">
                     <div class="kpi-label">Solde banque aujourd'hui (08/07)</div>
-                    <input type="text" class="kpi-value editable" value="5 691 EUR" data-key="tr-solde-jour">
+                    <input type="text" class="kpi-value editable" value="7 728 EUR" data-key="tr-solde-jour">
                     <div class="kpi-meta">
-                        <span class="kpi-target">Charges fin juin passées, pic 10/07 imminent</span>
-                        <span class="kpi-status yellow"><span class="status-dot"></span> Tendu, pic +28K€ dans 2 jours</span>
+                        <span class="kpi-target">Réel app CE (proj. Eva : 5 691 EUR, delta +2 037)</span>
+                        <span class="kpi-status yellow"><span class="status-dot"></span> Tendu, pic +26K€ dans 2 jours</span>
                     </div>
                 </div>
 
@@ -1941,8 +1941,8 @@
                     <tbody>
                         <tr style="background: var(--mh-blue-dim);">
                             <td><strong>08/07/2026</strong> <span style="color: var(--text-muted); font-size: 0.75rem;">(aujourd'hui)</span></td>
-                            <td class="cell-mono cell-highlight">5 691 EUR</td>
-                            <td class="cell-mono" style="color: var(--text-muted);">= brut</td>
+                            <td class="cell-mono cell-highlight">7 728 EUR <span style="font-size: 0.7rem; color: var(--text-muted);">(réel CE)</span></td>
+                            <td class="cell-mono" style="color: var(--text-muted);">proj. Eva : 5 691 EUR</td>
                             <td>Charges fin juin passées, pic imminent</td>
                         </tr>
                         <tr style="background: var(--accent-green-dim);">
@@ -2197,7 +2197,7 @@
         document.getElementById('currentDate').textContent = now.toLocaleDateString('fr-FR', options);
 
         // Local storage
-        const STORAGE_KEY = 'marketime-dashboard-2026-v14';
+        const STORAGE_KEY = 'marketime-dashboard-2026-v15';
 
         function saveData() {
             const data = { values: {} };
