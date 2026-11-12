@@ -10,3 +10,10 @@
     Referrer-Policy = "strict-origin-when-cross-origin"
     Permissions-Policy = "geolocation=(), microphone=(), camera=()"
     X-Robots-Tag = "noindex, nofollow"
+
+# Sous-domaine revendeurs : sauvegarde.marketimehub.fr sert le simulateur sauvegarde
+[[redirects]]
+  from = "https://sauvegarde.marketimehub.fr/*"
+  to = "/sauvegarde/:splat"
+  status = 200
+  force = true
