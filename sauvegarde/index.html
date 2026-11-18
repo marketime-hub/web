@@ -3,6 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex, nofollow">
 <title>Simulateur sauvegarde revendeur · Marketime Hub</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -15,13 +16,15 @@
   *{box-sizing:border-box;margin:0;padding:0}
   body{font-family:'Plus Jakarta Sans','Segoe UI',system-ui,sans-serif;color:var(--ink);background:var(--bg);line-height:1.6;-webkit-font-smoothing:antialiased}
   .wrap{max-width:940px;margin:0 auto;padding:0 20px 80px}
-  header{background:linear-gradient(135deg,#080040 0%,#2a0a5e 55%,#500088 100%);color:#fff;padding:44px 0 36px;margin-bottom:34px}
+  header{background:linear-gradient(135deg,#080040 0%,#2a0a5e 55%,#500088 100%);color:#fff;padding:40px 0 34px;margin-bottom:28px}
   header .wrap{padding-top:0;padding-bottom:0}
   .badge{display:inline-block;font-size:12px;letter-spacing:.12em;text-transform:uppercase;font-weight:700;color:#c9b8ff;background:rgba(255,255,255,.1);padding:6px 14px;border-radius:999px;margin-bottom:16px}
-  h1{font-family:'Outfit','Plus Jakarta Sans',sans-serif;font-size:28px;line-height:1.2;font-weight:800}
+  h1{font-family:'Outfit','Plus Jakarta Sans',sans-serif;font-size:27px;line-height:1.2;font-weight:800}
   header p.sub{color:#d9d4ef;margin-top:12px;font-size:16px;max-width:720px}
-  .meta{margin-top:18px;font-size:13px;color:#a79fce}
-  h2{font-family:'Outfit',sans-serif;font-size:21px;font-weight:700;margin:38px 0 14px;display:flex;align-items:center;gap:10px;color:var(--navy)}
+  .meta{margin-top:18px;font-size:13px;color:#a79fce;display:flex;flex-wrap:wrap;gap:4px 14px;align-items:center}
+  .who{color:#fff;font-weight:700}
+  .who .tag{background:rgba(255,255,255,.14);padding:3px 10px;border-radius:999px;font-size:12px;margin-left:4px}
+  h2{font-family:'Outfit',sans-serif;font-size:21px;font-weight:700;margin:30px 0 14px;display:flex;align-items:center;gap:10px;color:var(--navy)}
   h2 .n{display:inline-flex;align-items:center;justify-content:center;width:29px;height:29px;border-radius:8px;background:var(--violet);color:#fff;font-size:14px;flex:none}
   h3{font-family:'Outfit',sans-serif;font-size:16px;font-weight:700;margin:16px 0 8px;color:var(--slate)}
   p{margin:9px 0}
@@ -31,10 +34,10 @@
   th{background:var(--navy);color:#fff;font-weight:600;font-size:12.5px}
   td.num,th.num{text-align:right;font-variant-numeric:tabular-nums;white-space:nowrap}
   tr:last-child td{border-bottom:none}
-  .good{color:var(--green);font-weight:700}
   .callout{border-radius:12px;padding:14px 16px;margin:14px 0;font-size:14px}
   .callout.key{background:#f3f0ff;border:1px solid #d6c9f5}
   .callout.warn{background:#fff7ed;border:1px solid #fed7aa}
+  .callout.local{background:#eff6ff;border:1px solid #bfdbfe}
   .callout b{color:var(--navy)}
   .packs{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin:14px 0}
   .pack{border:1px solid var(--line);border-radius:14px;padding:18px;background:var(--card);box-shadow:0 1px 2px rgba(8,0,64,.05)}
@@ -45,98 +48,165 @@
   .sim{display:grid;grid-template-columns:repeat(4,1fr);gap:10px 14px;margin:10px 0}
   .sim label{display:block;font-size:12px;color:var(--grey);margin-bottom:3px}
   .sim input{width:100%;padding:9px 11px;border:1px solid var(--line);border-radius:8px;font:inherit;font-size:16px;background:#fff}
-  .res{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin:16px 0}
+  .sim .full{grid-column:1 / -1}
+  .res{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin:16px 0}
   .res .box{background:var(--soft);border-radius:12px;padding:13px 15px}
   .res .v{font-family:'Outfit',sans-serif;font-size:22px;font-weight:800;color:var(--violet)}
   .res .v.navy{color:var(--navy)}
   .res .l{font-size:12px;color:var(--grey);margin-top:2px}
   .foot{margin-top:44px;padding-top:18px;border-top:1px solid var(--line);font-size:12.5px;color:var(--grey)}
-  @media(max-width:700px){.packs{grid-template-columns:1fr}.sim,.res{grid-template-columns:1fr 1fr}}
+  .tabs{display:flex;gap:8px;margin:8px 0 2px;flex-wrap:wrap}
+  .tab{font-family:'Outfit',sans-serif;font-weight:700;font-size:14.5px;padding:11px 18px;border:1px solid var(--line);border-radius:11px 11px 0 0;background:#efeef7;color:var(--grey);cursor:pointer}
+  .tab.active{background:var(--card);color:var(--navy);border-bottom-color:var(--card);box-shadow:0 -1px 2px rgba(8,0,64,.04)}
+  .panel{display:none}
+  .panel.active{display:block}
+  .btnrow{display:flex;gap:10px;flex-wrap:wrap;margin:14px 0 2px}
+  .btn{font-family:'Outfit',sans-serif;font-weight:700;font-size:14.5px;padding:12px 20px;border-radius:10px;border:0;cursor:pointer;text-decoration:none;display:inline-flex;align-items:center;gap:8px}
+  .btn.primary{background:var(--violet);color:#fff}
+  .btn.ghost{background:#efeef7;color:var(--navy);border:1px solid var(--line)}
+  .btn:active{transform:translateY(1px)}
+  .recap{background:#0b0530;color:#e9e6ff;border-radius:12px;padding:16px 18px;margin:14px 0;font-family:'Plus Jakarta Sans',monospace;font-size:13.5px;white-space:pre-wrap;line-height:1.7}
+  .cfgnote{font-size:12px;color:#8ad0a9}
+  /* Gate */
+  .gate{position:fixed;inset:0;z-index:50;background:linear-gradient(135deg,#080040 0%,#2a0a5e 55%,#500088 100%);display:flex;align-items:center;justify-content:center;padding:20px}
+  .gate.hidden{display:none}
+  .gatecard{background:#fff;border-radius:18px;padding:34px 30px;max-width:420px;width:100%;box-shadow:0 20px 60px rgba(0,0,0,.35);text-align:center}
+  .gatecard .lk{font-size:34px}
+  .gatecard h2{justify-content:center;margin:12px 0 6px;color:var(--navy)}
+  .gatecard p{color:var(--grey);font-size:14px;margin:4px 0 18px}
+  .gatecard input{width:100%;padding:13px 14px;border:1.5px solid var(--line);border-radius:10px;font:inherit;font-size:17px;text-align:center;letter-spacing:.05em;text-transform:uppercase}
+  .gatecard input:focus{outline:none;border-color:var(--violet)}
+  .gatecard button{margin-top:14px;width:100%;background:var(--violet);color:#fff;border:0;border-radius:10px;padding:13px;font:inherit;font-weight:700;font-size:16px;cursor:pointer}
+  .gateerr{color:#b91c1c;font-size:13.5px;font-weight:600;margin-top:12px;min-height:18px}
+  @media(max-width:700px){.packs{grid-template-columns:1fr}.sim{grid-template-columns:1fr 1fr}.res{grid-template-columns:1fr}}
 </style>
 </head>
 <body>
+
+<!-- ============ VERROU D'ACCÈS (code par revendeur) ============ -->
+<div class="gate" id="gate">
+  <div class="gatecard">
+    <div class="lk">🔒</div>
+    <h2>Simulateur sauvegarde</h2>
+    <p>Outil réservé aux revendeurs Marketime Hub. Saisissez le code qui vous a été communiqué.</p>
+    <input id="gcode" type="text" autocomplete="off" placeholder="VOTRE CODE" aria-label="Code d'accès">
+    <button id="gbtn" type="button">Accéder</button>
+    <div class="gateerr" id="gerr"></div>
+  </div>
+</div>
+
+<div id="app" style="display:none">
 <header>
   <div class="wrap">
     <span class="badge">Outil revendeur · Sauvegarde souveraine</span>
     <h1>Simulateur sauvegarde, pour les revendeurs Marketime Hub</h1>
-    <p class="sub">Construisez votre offre : votre prix d'achat, le prix conseillé à proposer au client, votre marge, et la comparaison avec l'offre hébergée Arx One. La sauvegarde Marketime Hub reste systématiquement mieux placée.</p>
-    <div class="meta">Marketime Hub &nbsp;•&nbsp; Novembre 2026 &nbsp;•&nbsp; Prix conseillés, libres à ajuster</div>
+    <p class="sub">Un onglet pour <b>positionner votre offre</b> face à l'hébergé Arx One, un onglet pour voir <b>ce que la commande vous coûte</b> chez Marketime Hub et la passer sur le portail.</p>
+    <div class="meta">
+      <span class="who">Espace revendeur</span>
+      <span>Novembre 2026</span>
+      <span>Prix conseillés, libres à ajuster</span>
+    </div>
   </div>
 </header>
 
 <div class="wrap">
 
-  <div class="callout key"><b>Le principe.</b> Vous achetez à Marketime Hub le <b>stockage au To</b> et les <b>licences par machine</b> (poste, serveur, utilisateur Microsoft 365). Vous revendez à vos clients <b>au poste, au serveur et à l'utilisateur</b>, chaque ligne incluant une allocation de stockage. Le prix conseillé reste toujours <b>sous l'équivalent hébergé Arx One</b> : votre offre est toujours la mieux placée pour le client.</div>
+  <div class="callout key"><b>Le principe.</b> Vous achetez à Marketime Hub le <b>stockage au To</b> et les <b>licences par machine</b> (poste, serveur, utilisateur Microsoft 365). Vous revendez à vos clients <b>au poste, au serveur et à l'utilisateur</b>, chaque ligne incluant une allocation de stockage. Le prix conseillé reste toujours <b>sous l'équivalent hébergé Arx One</b>.</div>
 
-  <h2><span class="n">1</span>Vos prix d'achat (ce que vous payez à Marketime Hub)</h2>
-  <table>
-    <tr><th>Élément</th><th class="num">Prix d'achat revendeur</th></tr>
-    <tr><td>Stockage (minimum 1 To, mutualisable)</td><td class="num">100 €/To/mois</td></tr>
-    <tr><td>Licence poste (Windows, macOS)</td><td class="num">2,20 €/mois</td></tr>
-    <tr><td>Licence serveur / NAS</td><td class="num">12 €/mois</td></tr>
-    <tr><td>Agent Microsoft 365 (Cloud to Cloud)</td><td class="num">3 €/mois</td></tr>
-  </table>
-  <p class="foot" style="margin:2px 0 0;border:0;padding:0">Les licences sont facturées à l'unité, indépendamment du volume. Le stockage est mutualisable : regroupez plusieurs clients sur chaque To réservé pour le remplir. Un To réservé qui ne porte qu'un seul petit client reste facturé 100 €.</p>
+  <div class="callout local"><b>Réplication locale (option).</b> Pour un client éloigné des datacenters métropole (ex. Pacifique), une copie peut être conservée sur un site local en plus de la réplication inter-datacenters. À cadrer au cas par cas avec Marketime Hub / Arx One avant devis.</div>
 
-  <h2><span class="n">2</span>Prix conseillés à proposer au client</h2>
-  <table>
-    <tr><th>Ligne de vente</th><th class="num">Stockage inclus</th><th class="num">Prix conseillé client</th></tr>
-    <tr><td>Poste (Windows, macOS)</td><td class="num">50 Go</td><td class="num">12 €/mois</td></tr>
-    <tr><td>Serveur / NAS</td><td class="num">100 Go</td><td class="num">38 €/mois</td></tr>
-    <tr><td>Utilisateur Microsoft 365</td><td class="num">~30 Go</td><td class="num">8 €/mois</td></tr>
-    <tr><td>Stockage supplémentaire</td><td class="num">par 100 Go</td><td class="num">15 €/mois</td></tr>
-  </table>
-  <p class="foot" style="margin:2px 0 0;border:0;padding:0">Prix conseillés : vous restez libre de les ajuster. Au-delà de l'allocation incluse, le stockage se facture par tranche de 100 Go.</p>
-
-  <h2><span class="n">3</span>Forfaits d'appel (prix conseillés client)</h2>
-  <div class="packs">
-    <div class="pack">
-      <h3>Pack Micro</h3>
-      <div class="price">22 €<span> / mois</span></div>
-      <ul>
-        <li>Jusqu'à 2 postes</li>
-        <li>100 Go inclus</li>
-        <li>Idéal TPE, indépendants</li>
-      </ul>
-    </div>
-    <div class="pack">
-      <h3>Pack Essentiel</h3>
-      <div class="price">79 €<span> / mois</span></div>
-      <ul>
-        <li>1 serveur + 3 postes</li>
-        <li>300 Go inclus</li>
-        <li>Petite entreprise type</li>
-      </ul>
-    </div>
-    <div class="pack">
-      <h3>Pack Business</h3>
-      <div class="price">279 €<span> / mois</span></div>
-      <ul>
-        <li>2 serveurs + 10 postes</li>
-        <li>1,5 To inclus</li>
-        <li>PME établie</li>
-      </ul>
-    </div>
-  </div>
-  <p class="foot" style="margin:2px 0 0;border:0;padding:0">Les forfaits regroupent des lignes à la carte avec un léger rabais. Au-delà du stockage inclus, les Go supplémentaires s'appliquent (15 € / 100 Go).</p>
-
-  <h2><span class="n">4</span>Simulateur de devis</h2>
+  <!-- ===== Config partagée ===== -->
+  <h2><span class="n">1</span>Configuration du client</h2>
   <div class="card">
-    <p style="margin-top:0">Saisissez la configuration du client. Le simulateur donne le prix conseillé à proposer, votre coût pour ce client (ses licences + sa quote-part de stockage), votre marge, et le prix qu'aurait facturé l'offre hébergée Arx One pour le même client.</p>
-    <h3>Configuration du client</h3>
     <div class="sim">
-      <div><label for="postes">Postes</label><input id="postes" type="number" min="0" step="1" value="2"></div>
+      <div><label for="postes">Postes (Windows, macOS)</label><input id="postes" type="number" min="0" step="1" value="2"></div>
       <div><label for="serveurs">Serveurs / NAS</label><input id="serveurs" type="number" min="0" step="1" value="1"></div>
       <div><label for="m365">Utilisateurs M365</label><input id="m365" type="number" min="0" step="1" value="0"></div>
       <div><label for="go">Stockage total (Go)</label><input id="go" type="number" min="0" step="10" value="150"></div>
+      <div class="full"><label for="client">Nom du client / prospect (optionnel, pour le récap)</label><input id="client" type="text" placeholder="Ex. Cabinet Durand"></div>
     </div>
-    <div class="res">
-      <div class="box"><div class="v navy" id="rPrix">-</div><div class="l">prix conseillé au client / mois</div></div>
-      <div class="box"><div class="v" id="rAchat">-</div><div class="l">votre coût pour ce client / mois</div></div>
-      <div class="box"><div class="v" id="rMarge">-</div><div class="l">votre marge / mois</div></div>
-      <div class="box"><div class="v" id="rArx">-</div><div class="l">équivalent hébergé Arx One / mois</div></div>
+  </div>
+
+  <!-- ===== Onglets ===== -->
+  <div class="tabs">
+    <div class="tab active" id="tabA" role="button" tabindex="0">① Positionner mon offre</div>
+    <div class="tab" id="tabB" role="button" tabindex="0">② Ma commande Marketime Hub</div>
+  </div>
+
+  <!-- ========== ONGLET A : OFFRE CLIENT ========== -->
+  <div class="panel active" id="panelA">
+    <div class="card">
+      <h3 style="margin-top:0">Le prix à proposer à votre client</h3>
+      <div class="res">
+        <div class="box"><div class="v navy" id="rPrix">-</div><div class="l">prix conseillé au client / mois</div></div>
+        <div class="box"><div class="v" id="rArx">-</div><div class="l">équivalent hébergé Arx One / mois</div></div>
+        <div class="box"><div class="v" id="rEcart">-</div><div class="l">votre avantage prix / mois</div></div>
+      </div>
+      <p id="rDetail" class="foot" style="margin:2px 0 0;border:0;padding:0"></p>
     </div>
-    <p id="rDetail" class="foot" style="margin:2px 0 0;border:0;padding:0"></p>
+
+    <h3>Prix conseillés à proposer au client</h3>
+    <table>
+      <tr><th>Ligne de vente</th><th class="num">Stockage inclus</th><th class="num">Prix conseillé client</th></tr>
+      <tr><td>Poste (Windows, macOS)</td><td class="num">50 Go</td><td class="num">12 €/mois</td></tr>
+      <tr><td>Serveur / NAS</td><td class="num">100 Go</td><td class="num">38 €/mois</td></tr>
+      <tr><td>Utilisateur Microsoft 365</td><td class="num">~30 Go</td><td class="num">8 €/mois</td></tr>
+      <tr><td>Stockage supplémentaire</td><td class="num">par 100 Go</td><td class="num">15 €/mois</td></tr>
+    </table>
+    <p class="foot" style="margin:2px 0 0;border:0;padding:0">Prix conseillés : vous restez libre de les ajuster. Au-delà de l'allocation incluse, le stockage se facture par tranche de 100 Go.</p>
+
+    <h3>Forfaits d'appel (prix conseillés client)</h3>
+    <div class="packs">
+      <div class="pack">
+        <h3>Pack Micro</h3>
+        <div class="price">22 €<span> / mois</span></div>
+        <ul><li>Jusqu'à 2 postes</li><li>100 Go inclus</li><li>Idéal TPE, indépendants</li></ul>
+      </div>
+      <div class="pack">
+        <h3>Pack Essentiel</h3>
+        <div class="price">79 €<span> / mois</span></div>
+        <ul><li>1 serveur + 3 postes</li><li>300 Go inclus</li><li>Petite entreprise type</li></ul>
+      </div>
+      <div class="pack">
+        <h3>Pack Business</h3>
+        <div class="price">279 €<span> / mois</span></div>
+        <ul><li>2 serveurs + 10 postes</li><li>1,5 To inclus</li><li>PME établie</li></ul>
+      </div>
+    </div>
+    <p class="foot" style="margin:2px 0 0;border:0;padding:0">Les forfaits regroupent des lignes à la carte avec un léger rabais. Au-delà du stockage inclus, les Go supplémentaires s'appliquent (15 € / 100 Go).</p>
+  </div>
+
+  <!-- ========== ONGLET B : COMMANDE MH ========== -->
+  <div class="panel" id="panelB">
+    <div class="card">
+      <h3 style="margin-top:0">Ce que cette configuration vous coûte chez Marketime Hub</h3>
+      <div class="res">
+        <div class="box"><div class="v" id="bCout">-</div><div class="l">votre coût pour ce client / mois</div></div>
+        <div class="box"><div class="v navy" id="bMarge">-</div><div class="l">votre marge / mois</div></div>
+        <div class="box"><div class="v" id="bPrix">-</div><div class="l">rappel prix conseillé client / mois</div></div>
+      </div>
+      <p id="bDetail" class="foot" style="margin:2px 0 0;border:0;padding:0"></p>
+    </div>
+
+    <h3>Vos prix d'achat (ce que vous payez à Marketime Hub)</h3>
+    <table>
+      <tr><th>Élément</th><th class="num">Prix d'achat revendeur</th></tr>
+      <tr><td>Stockage (minimum 1 To, mutualisable)</td><td class="num">100 €/To/mois</td></tr>
+      <tr><td>Licence poste (Windows, macOS)</td><td class="num">2,20 €/mois</td></tr>
+      <tr><td>Licence serveur / NAS</td><td class="num">12 €/mois</td></tr>
+      <tr><td>Agent Microsoft 365 (Cloud to Cloud)</td><td class="num">3 €/mois</td></tr>
+    </table>
+    <p class="foot" style="margin:2px 0 0;border:0;padding:0">Les licences sont facturées à l'unité. Le stockage est mutualisable : regroupez plusieurs clients sur chaque To réservé. Un To réservé qui ne porte qu'un seul petit client reste facturé 100 €.</p>
+
+    <h3>Passer la commande</h3>
+    <div class="card">
+      <div class="recap" id="recap"></div>
+      <div class="btnrow">
+        <a class="btn primary" id="portalBtn" href="#" target="_blank" rel="noopener">Commander sur le portail Marketime Hub →</a>
+        <button class="btn ghost" id="copyBtn" type="button">Copier le récap de commande</button>
+      </div>
+      <p class="cfgnote" id="portalNote"></p>
+    </div>
   </div>
 
   <div class="callout warn"><b>À savoir.</b> L'offre n'est pas HDS (pas de données de santé). Chaque sauvegarde est copiée sur un premier site puis répliquée sur un second dans la journée (jusqu'à 24 h), comme l'offre hébergée Arx One. Arx One hébergé facture 1 To au minimum, d'où son prix élevé sur les petits clients.</div>
@@ -146,27 +216,69 @@
   </div>
 
 </div>
+</div><!-- /#app -->
 
 <script>
 (function(){
+  "use strict";
+
+  /* =======================================================================
+     1) CODE D'ACCÈS — un code unique partagé par tous les revendeurs.
+        But : ne pas exposer publiquement les prix de vente. ÉDITABLE ci-dessous.
+        NB : outil statique côté navigateur — ce code n'est pas un coffre-fort.
+     ======================================================================= */
+  var CODE="MHSAUV-7KQ9X4P2";
+
+  /* =======================================================================
+     2) PORTAIL DE COMMANDE — remplacer par l'URL Odoo de prise de commande.
+        Laisser vide ("") pour afficher un bouton désactivé.
+     ======================================================================= */
+  var PORTAIL="https://www.marketimehub.com/shop"; // portail Odoo de prise de commande
+
+  /* =======================================================================
+     3) TARIFS (fixes)
+     ======================================================================= */
+  var STO=100, LP=2.20, LS=12, LM=3;       // achat revendeur
+  var cP=12, cS=38, cM=8, cSup=15;         // conseillés client
+  var iP=50, iS=100, iM=30;                // Go inclus par ligne
+  var SECU=0.10;                           // conseillé reste >=10% sous l'hébergé Arx One
+  var CONSEIL=[[1,182],[2,332],[3,481],[4,631],[5,780],[8,1092],[10,1300],[13,1534],[15,1690],[18,1924],[20,2080],[23,2275],[25,2405],[28,2600],[30,2730]];
+
   var $=function(id){return document.getElementById(id);};
   var n=function(id){var v=parseFloat($(id).value);return isNaN(v)?0:v;};
   var eur=function(x){return (Math.round(x*100)/100).toLocaleString('fr-FR',{minimumFractionDigits:0,maximumFractionDigits:0})+' €';};
-  // Prix d'achat revendeur (ce que le revendeur paie à Marketime Hub)
-  var STO=100, LP=2.20, LS=12, LM=3;
-  // Prix conseillés au client
-  var cP=12, cS=38, cM=8, cSup=15;
-  // Allocations de stockage incluses (Go)
-  var iP=50, iS=100, iM=30;
-  // Le conseillé reste au moins SECU % sous l'équivalent hébergé Arx One
-  var SECU=0.10;
-  // Barème public conseillé de l'offre HÉBERGÉE Arx One (prix client/mois, par palier de To, 1 To minimum)
-  var CONSEIL=[[1,182],[2,332],[3,481],[4,631],[5,780],[8,1092],[10,1300],[13,1534],[15,1690],[18,1924],[20,2080],[23,2275],[25,2405],[28,2600],[30,2730]];
   function arxHosted(go){
     var to=Math.max(1,Math.ceil(go/1000));
     for(var i=0;i<CONSEIL.length;i++){if(CONSEIL[i][0]>=to)return CONSEIL[i][1];}
     return null;
   }
+  /* ===================== VERROU ===================== */
+  function unlock(code){
+    code=(code||'').trim().toUpperCase();
+    if(code!==CODE){ $('gerr').textContent='Code non reconnu. Vérifiez auprès de Marketime Hub.'; return false; }
+    try{ sessionStorage.setItem('mh_sauv_ok','1'); }catch(e){}
+    $('gate').classList.add('hidden');
+    $('app').style.display='';
+    render();
+    return true;
+  }
+  $('gbtn').addEventListener('click',function(){unlock($('gcode').value);});
+  $('gcode').addEventListener('keydown',function(e){if(e.key==='Enter')unlock($('gcode').value);});
+  // reprise de session (même onglet)
+  try{ if(sessionStorage.getItem('mh_sauv_ok')==='1') unlock(CODE); }catch(e){}
+
+  /* ===================== ONGLETS ===================== */
+  function setTab(which){
+    var a=which==='A';
+    $('tabA').classList.toggle('active',a); $('tabB').classList.toggle('active',!a);
+    $('panelA').classList.toggle('active',a); $('panelB').classList.toggle('active',!a);
+  }
+  $('tabA').addEventListener('click',function(){setTab('A');});
+  $('tabB').addEventListener('click',function(){setTab('B');});
+  $('tabA').addEventListener('keydown',function(e){if(e.key==='Enter'||e.key===' ')setTab('A');});
+  $('tabB').addEventListener('keydown',function(e){if(e.key==='Enter'||e.key===' ')setTab('B');});
+
+  /* ===================== CALCUL ===================== */
   function render(){
     var postes=n('postes'),serveurs=n('serveurs'),m365=n('m365'),go=n('go');
     var inclus=postes*iP+serveurs*iS+m365*iM;
@@ -178,22 +290,58 @@
     var prix=base,plafonne=false;
     if(arx!==null){var plafond=arx*(1-SECU);if(base>plafond){prix=plafond;plafonne=true;}}
     var marge=prix-achat;
+
+    /* Onglet A */
     $('rPrix').textContent=eur(prix);
-    $('rAchat').textContent=eur(achat);
-    $('rMarge').textContent=(marge<0?'−':'+')+eur(Math.abs(marge));
-    $('rMarge').style.color=marge<0?'#991b1b':'#047857';
     $('rArx').textContent=(arx===null?'sur devis':eur(arx));
+    $('rEcart').textContent=(arx===null?'—':eur(Math.max(0,arx-prix)));
     var parTo=(to>0&&to<1)?' (~'+Math.floor(1/to)+' clients de ce profil par To réservé)':'';
-    var notes='Coût de ce client : quote-part stockage '+eur(to*STO)+' ('+to.toLocaleString('fr-FR')+' To sur un To mutualisé à 100 €) + licences '+eur(postes*LP+serveurs*LS+m365*LM)+'. Vous achetez le stockage au To (1 To minimum) et le remplissez avec plusieurs clients'+parTo+'. Stockage inclus '+inclus+' Go'+(sup>0?', '+sup+' tranche(s) de 100 Go en supplément.':', pas de dépassement.');
-    if(arx!==null){
-      if(plafonne)notes+=' Prix plafonné à '+Math.round(SECU*100)+' % sous l’hébergé Arx One (base au poste : '+eur(base)+').';
-      else notes+=' Soit '+eur(arx-prix)+' de moins que l’hébergé Arx One pour le client.';
-    }
-    if(marge<0)notes+=' ⚠ Configuration dense en machines : demandez un devis au To à Marketime Hub.';
-    $('rDetail').textContent=notes;
+    var da='Stockage inclus '+inclus+' Go'+(sup>0?', '+sup+' tranche(s) de 100 Go en supplément.':', pas de dépassement.');
+    if(arx!==null){ da+=plafonne?' Prix plafonné à '+Math.round(SECU*100)+' % sous l’hébergé Arx One (base au poste : '+eur(base)+').':' Soit '+eur(arx-prix)+' de moins que l’hébergé Arx One pour le client.'; }
+    $('rDetail').textContent=da;
+
+    /* Onglet B */
+    $('bCout').textContent=eur(achat);
+    $('bMarge').textContent=(marge<0?'−':'+')+eur(Math.abs(marge));
+    $('bMarge').style.color=marge<0?'#991b1b':'#047857';
+    $('bPrix').textContent=eur(prix);
+    var db='Coût de ce client : quote-part stockage '+eur(to*STO)+' ('+to.toLocaleString('fr-FR')+' To sur un To mutualisé à 100 €) + licences '+eur(postes*LP+serveurs*LS+m365*LM)+'. Vous achetez le stockage au To (1 To minimum) et le remplissez avec plusieurs clients'+parTo+'.';
+    if(marge<0)db+=' ⚠ Configuration dense en machines : demandez un devis au To à Marketime Hub.';
+    $('bDetail').textContent=db;
+
+    /* Récap commande */
+    var cli=$('client').value.trim();
+    var lignes=[];
+    lignes.push('COMMANDE SAUVEGARDE · Marketime Hub');
+    if(cli) lignes.push('Client : '+cli);
+    lignes.push('');
+    lignes.push('Licences :');
+    lignes.push('  • Postes (Win/macOS) ....... '+postes);
+    lignes.push('  • Serveurs / NAS ........... '+serveurs);
+    lignes.push('  • Agents Microsoft 365 ..... '+m365);
+    lignes.push('Stockage à provisionner : '+go+' Go');
+    lignes.push('  (à intégrer à votre pool To Marketime Hub, facturé par To entier, 1 To min.)');
+    lignes.push('');
+    lignes.push('Prix conseillé client : '+eur(prix)+'/mois'+(cli?'':'')+'.');
+    $('recap').textContent=lignes.join('\n');
+
+    /* Bouton portail */
+    var pb=$('portalBtn');
+    if(PORTAIL){ pb.href=PORTAIL; pb.style.opacity='1'; pb.style.pointerEvents='auto'; $('portalNote').textContent=''; }
+    else{ pb.href='#'; pb.style.opacity='.5'; pb.style.pointerEvents='none'; $('portalNote').textContent='⚙ Lien du portail de commande à configurer (URL Odoo).'; }
   }
-  ['postes','serveurs','m365','go'].forEach(function(id){$(id).addEventListener('input',render);});
-  render();
+
+  ['postes','serveurs','m365','go','client'].forEach(function(id){$(id).addEventListener('input',render);});
+
+  /* Copier le récap */
+  $('copyBtn').addEventListener('click',function(){
+    var txt=$('recap').textContent, btn=this;
+    function ok(){var o=btn.textContent;btn.textContent='✓ Copié';setTimeout(function(){btn.textContent=o;},1600);}
+    if(navigator.clipboard&&navigator.clipboard.writeText){navigator.clipboard.writeText(txt).then(ok,function(){fallback(txt,ok);});}
+    else fallback(txt,ok);
+  });
+  function fallback(txt,ok){var t=document.createElement('textarea');t.value=txt;document.body.appendChild(t);t.select();try{document.execCommand('copy');ok();}catch(e){}document.body.removeChild(t);}
+
 })();
 </script>
 </body>
