@@ -319,8 +319,10 @@
     lignes.push('  • Postes (Win/macOS) ....... '+postes);
     lignes.push('  • Serveurs / NAS ........... '+serveurs);
     lignes.push('  • Agents Microsoft 365 ..... '+m365);
+    var toReserve=Math.max(1,Math.ceil(go/1000));
     lignes.push('Stockage à provisionner : '+go+' Go');
     lignes.push('  (à intégrer à votre pool To Marketime Hub, facturé par To entier, 1 To min.)');
+    lignes.push('  Si votre pool est plein : +'+toReserve+' To à réserver.');
     lignes.push('');
     lignes.push('Prix conseillé client : '+eur(prix)+'/mois'+(cli?'':'')+'.');
     $('recap').textContent=lignes.join('\n');
