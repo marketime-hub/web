@@ -102,7 +102,7 @@
     <h1>Simulateur sauvegarde, pour les revendeurs Marketime Hub</h1>
     <p class="sub">Un onglet pour <b>positionner votre offre</b> face à l'hébergé Arx One, un onglet pour voir <b>ce que la commande vous coûte</b> chez Marketime Hub et la passer sur le portail.</p>
     <div class="meta">
-      <span class="who" id="who"></span>
+      <span class="who">Espace revendeur</span>
       <span>Novembre 2026</span>
       <span>Prix conseillés, libres à ajuster</span>
     </div>
@@ -113,7 +113,7 @@
 
   <div class="callout key"><b>Le principe.</b> Vous achetez à Marketime Hub le <b>stockage au To</b> et les <b>licences par machine</b> (poste, serveur, utilisateur Microsoft 365). Vous revendez à vos clients <b>au poste, au serveur et à l'utilisateur</b>, chaque ligne incluant une allocation de stockage. Le prix conseillé reste toujours <b>sous l'équivalent hébergé Arx One</b>.</div>
 
-  <div class="callout local" id="localNote" style="display:none"><b>Réplication locale.</b> Pour vos clients éloignés des datacenters métropole (ex. Pacifique), une copie peut être conservée sur un site local en plus de la réplication inter-datacenters. Option à cadrer au cas par cas avec Marketime Hub / Arx One avant devis.</div>
+  <div class="callout local"><b>Réplication locale (option).</b> Pour un client éloigné des datacenters métropole (ex. Pacifique), une copie peut être conservée sur un site local en plus de la réplication inter-datacenters. À cadrer au cas par cas avec Marketime Hub / Arx One avant devis.</div>
 
   <!-- ===== Config partagée ===== -->
   <h2><span class="n">1</span>Configuration du client</h2>
@@ -223,23 +223,11 @@
   "use strict";
 
   /* =======================================================================
-     1) CODES D'ACCÈS — un code par revendeur.
-        ÉDITABLE : ajoutez / retirez des lignes "CODE": "Nom du revendeur".
-        Pour un revendeur avec réplication locale (Pacifique, etc.),
-        utilisez la forme objet : "CODE": {nom:"...", local:true}
-        NB : outil statique côté navigateur — ces codes ne sont pas un
-        coffre-fort, ils filtrent l'accès et identifient le revendeur.
+     1) CODE D'ACCÈS — un code unique partagé par tous les revendeurs.
+        But : ne pas exposer publiquement les prix de vente. ÉDITABLE ci-dessous.
+        NB : outil statique côté navigateur — ce code n'est pas un coffre-fort.
      ======================================================================= */
-  var REVENDEURS={
-    "COMECA-7K2":"Comeca",
-    "1PACTE-9R4":"1Pacte Littoral",
-    "ESEC-3M8":"e-securemail",
-    "BREIZH-5T1":"Breizh Solutions",
-    "DIGIB-6W3":"Digiburo",
-    "ERENUM-2X9":"Ere Numérique",
-    "SOMAR-4P7":{nom:"SOMAR Pacifique", local:true},
-    "DEMO-MH26":"Démo Marketime Hub"
-  };
+  var CODE="MH-SAUV-26";
 
   /* =======================================================================
      2) PORTAIL DE COMMANDE — remplacer par l'URL Odoo de prise de commande.
@@ -264,27 +252,20 @@
     for(var i=0;i<CONSEIL.length;i++){if(CONSEIL[i][0]>=to)return CONSEIL[i][1];}
     return null;
   }
-  function norm(r){return (typeof r==='string')?{nom:r,local:false}:{nom:r.nom,local:!!r.local};}
-
   /* ===================== VERROU ===================== */
-  var current=null;
   function unlock(code){
     code=(code||'').trim().toUpperCase();
-    var r=REVENDEURS[code];
-    if(!r){ $('gerr').textContent='Code non reconnu. Vérifiez auprès de Marketime Hub.'; return false; }
-    current=norm(r);
-    try{ sessionStorage.setItem('mh_sauv_code',code); }catch(e){}
+    if(code!==CODE){ $('gerr').textContent='Code non reconnu. Vérifiez auprès de Marketime Hub.'; return false; }
+    try{ sessionStorage.setItem('mh_sauv_ok','1'); }catch(e){}
     $('gate').classList.add('hidden');
     $('app').style.display='';
-    $('who').innerHTML='Revendeur <span class="tag">'+current.nom+'</span>';
-    if(current.local){ $('localNote').style.display=''; }
     render();
     return true;
   }
   $('gbtn').addEventListener('click',function(){unlock($('gcode').value);});
   $('gcode').addEventListener('keydown',function(e){if(e.key==='Enter')unlock($('gcode').value);});
   // reprise de session (même onglet)
-  try{ var saved=sessionStorage.getItem('mh_sauv_code'); if(saved&&REVENDEURS[saved]) unlock(saved); }catch(e){}
+  try{ if(sessionStorage.getItem('mh_sauv_ok')==='1') unlock(CODE); }catch(e){}
 
   /* ===================== ONGLETS ===================== */
   function setTab(which){
@@ -332,7 +313,6 @@
     var cli=$('client').value.trim();
     var lignes=[];
     lignes.push('COMMANDE SAUVEGARDE · Marketime Hub');
-    lignes.push('Revendeur : '+(current?current.nom:'—'));
     if(cli) lignes.push('Client : '+cli);
     lignes.push('');
     lignes.push('Licences :');
